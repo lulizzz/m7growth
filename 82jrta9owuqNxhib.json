@@ -1,0 +1,1490 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Dados Entrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados Entrada": {
+      "main": [
+        [
+          {
+            "node": "Perguntas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Dados Entrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inputs": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row Supabase": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row Supabase1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row Supabase2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row Supabase3": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row Supabase4": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Consulta BD",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta BD": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Consulta BD1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perguntas": {
+      "main": [
+        [
+          {
+            "node": "Regras de Avaliação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Regras de Avaliação": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta BD1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Frio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Morno",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Quente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-16T22:17:52.945Z",
+  "id": "82jrta9owuqNxhib",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4624,
+        480
+      ],
+      "id": "81dc89bf-ea8e-42f7-9a04-8eec6670e519",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7ea021f-392f-4549-b13f-4817062a988a",
+              "name": "remoteJid",
+              "value": "5519981881386@s.whatsapp.net",
+              "type": "string"
+            },
+            {
+              "id": "37e0c6cf-5407-4b22-ae05-dcd954219725",
+              "name": "msg_input",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4000,
+        704
+      ],
+      "id": "3c14a1f1-5407-413f-8af7-bfd1f3a5a6bf",
+      "name": "Dados Entrada"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.msg_input }}",
+        "options": {
+          "systemMessage": "=Seu trabalho é obter as respostas abaixo.\n\nInicie as perguntas logo após a saudação:\n\nQ1 - O que levou você a considerar soluções como a nossa?\n\nQ2 - Qual o maior desafio que sua empresa enfrenta atualmente na área?\n\nQ3 - Vocês já têm algum sistema ou processo implementado para resolver esse problema?\n\nQ4 - Quais são as metas principais que sua equipe deseja alcançar nos próximos meses?\n\nQ5 - Quem geralmente toma as decisões para implementar novas soluções na sua empresa?\n\nFaça uma pergunta de cada vez.\nSempre salve a resposta na respectiva coluna no Supabase. O prefixo da pergunta representa o Field Name no supabase. Exemplo.: Q1, Q2, Q3, Q4, Q5\n\nAo concluir diga: \"Obrigado pelas informações\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        -1200,
+        688
+      ],
+      "id": "a655c968-c4ff-41d9-89ea-b6ef0892b345",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1488,
+        944
+      ],
+      "id": "1033193e-bd11-4796-baee-17720b2835c3",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('Dados Entrada').item.json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2288,
+        704
+      ],
+      "id": "25381025-b13e-40bd-aeb4-2650f6f5294a",
+      "name": "Supabase1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c40c8848-acbc-4da7-b2aa-c736ac58dc52",
+              "leftValue": "={{ $json.remoteJid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2080,
+        704
+      ],
+      "id": "30367808-d0d1-4a60-b6ec-6c6dae754e22",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "tableId": "Triagem",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "remoteJid",
+              "fieldValue": "={{ $('Dados Entrada').item.json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1904,
+        832
+      ],
+      "id": "24aac2bc-718d-4863-a9b1-e89f3f3f7870",
+      "name": "Supabase2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -4608,
+        832
+      ],
+      "id": "04b9d49b-396f-4133-8ee7-d9445a592faa",
+      "name": "When chat message received",
+      "webhookId": "24ccf105-4dcb-49ce-a63c-df01fca265d6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d22e08c9-ca1a-4074-bc2a-597a0ac9054a",
+              "name": "msg_input",
+              "value": "={{ $('Dados Entrada').item.json.msg_input }}",
+              "type": "string"
+            },
+            {
+              "id": "41e0f985-4a31-48bc-bbb8-cb7711ab0d68",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "f6b271cf-7f83-434f-9338-f603a3ae4e3b",
+              "name": "remoteJid",
+              "value": "={{ $json.remoteJid }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1456,
+        688
+      ],
+      "id": "cc10ce87-f807-474d-9915-80fb94c3e9bf",
+      "name": "Inputs"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to update information in supabase database for Q1",
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Inputs').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Q1",
+              "fieldValue": "={{ $fromAI('Q1', 'resposta da pergunta com prefixo Q1') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        928
+      ],
+      "id": "bbfde26c-79be-4c46-bb32-4aea85ec5852",
+      "name": "Update row Supabase"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to update information in supabase database for Q2",
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Inputs').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Q2",
+              "fieldValue": "={{ $fromAI('Q2', 'resposta da pergunta com prefixo Q2') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -1008,
+        928
+      ],
+      "id": "f0d71ac7-667d-4d2a-924c-6a920d0e978c",
+      "name": "Update row Supabase1"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to update information in supabase database for Q2",
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Inputs').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Q3",
+              "fieldValue": "={{ $fromAI('Q3', 'resposta da pergunta com prefixo Q3') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -864,
+        928
+      ],
+      "id": "e9aec002-84c4-4aa3-b638-19fd64e60c48",
+      "name": "Update row Supabase2"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to update information in supabase database for Q2",
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Inputs').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Q4",
+              "fieldValue": "={{ $fromAI('Q4', 'resposta da pergunta com prefixo Q4') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        928
+      ],
+      "id": "55aa9612-d198-424c-ac2e-a40d184b3295",
+      "name": "Update row Supabase3"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to update information in supabase database for Q2",
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Inputs').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Q5",
+              "fieldValue": "={{ $fromAI('Q5', 'resposta da pergunta com prefixo Q5') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        928
+      ],
+      "id": "1ad7e840-a8c8-432b-abd6-a91035e59335",
+      "name": "Update row Supabase4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fedc062b-099d-43c1-921d-3653e4f7ad27",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "Obrigado pelas informações",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -848,
+        688
+      ],
+      "id": "37a5e7e5-25fe-4205-aa00-9593d079bf03",
+      "name": "If1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        704
+      ],
+      "id": "524f2d6c-fbde-45bb-930e-95cbd7751ab8",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('Dados Entrada').item.json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        128,
+        304
+      ],
+      "id": "b4ea67ae-a01c-43b9-af0c-a70a9943e544",
+      "name": "Consulta BD"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        592,
+        592
+      ],
+      "id": "12a7c81e-d028-447b-ae57-05559c9d5fea",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        1904,
+        832
+      ],
+      "id": "bcf7b20e-e774-4f36-a51a-45127c3dda0f"
+    },
+    {
+      "parameters": {
+        "inputText": "=A pergunta foi: {{ $json.pergunta }}\nA resposta foi: {{ $json.resposta }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "1 Ponto",
+              "description": "O texto foi classificado com 1 ponto"
+            },
+            {
+              "category": "5 Pontos",
+              "description": "O texto foi classificado com 5 pontos"
+            },
+            {
+              "category": "10 Pontos",
+              "description": "O texto foi classificado com 10 pontos"
+            }
+          ]
+        },
+        "options": {
+          "systemPromptTemplate": "=Você é um classificador de oportunidades de vendas com base em respostas de potenciais clientes. Para cada resposta fornecida a uma pergunta de qualificação, atribua uma nota de 1, 5 ou 10 pontos, com base nos seguintes critérios:\n\n1 Ponto – A resposta indica baixa oportunidade de negócio. Isso inclui desinteresse, ausência de detalhes, respostas genéricas, falta de urgência ou ausência de problema claro.\n\n5 Pontos – A resposta indica boa oportunidade. Demonstra algum alinhamento com o serviço, mas sem urgência ou sem clareza sobre a dor. Pode indicar interesse moderado ou motivação por preço.\n\n10 Pontos – A resposta indica ótima oportunidade. É específica, demonstra dor clara, urgência, interesse ativo, ou já conhece a empresa. Também pontua alto se o respondente for o tomador de decisão ou se ainda não possui solução implementada.\n\n# Considere os seguintes fatores extras para ajustar sua pontuação:\n\n- Conexão com a empresa (já conhece, participou de eventos, leu materiais)\n- Clareza e especificidade na dor\n- Entusiasmo e urgência\n- Ser tomador de decisão\n- Ausência de solução atual para o problema\n\n# Exemplos para ajudar a calibrar a pontuação:\n\nQ1: O que levou você a considerar soluções como a nossa?\n• “Preço baixo” → 5 pontos\n• “A marca é forte, já acompanho há um tempo” → 10 pontos\n• “Vi no Google” → 1 ponto\n\nQ2: Qual o maior desafio que sua empresa enfrenta atualmente na área?\n• “Concorrência desleal” → 5 pontos\n• “Perdemos muito tempo com tarefas manuais e estamos sobrecarregados” → 10 pontos\n• “Nenhum” ou em branco → 1 ponto\n\nQ3: Vocês já têm algum sistema ou processo implementado para resolver esse problema?\n• “Ainda não” → 10 pontos\n• “Usamos algo improvisado no Excel” → 5 pontos\n• “Sim, já temos um sistema funcionando” → 1 ponto\n\nQ4: Quais são as metas principais que sua equipe deseja alcançar nos próximos meses?\n• “Organizar as tarefas e ganhar produtividade” → 5 pontos\n• “Crescer 20% e contratar mais 2 pessoas” → 10 pontos\n• (vazio ou genérico, como “melhorar”) → 1 ponto\n\nQ5: Quem toma as decisões de novas soluções na empresa?\n• “Eu mesmo” → 10 pontos\n• “Depende da diretoria” → 5 pontos\n• “Não sei / não respondi” → 1 ponto"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        880,
+        624
+      ],
+      "id": "1455e8e1-e534-43b4-94ac-1431e329616b",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        752,
+        832
+      ],
+      "id": "bc1269c8-0507-4100-990f-60f362d9542e",
+      "name": "OpenAI Chat Model1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Consulta BD').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "=Nota_{{ $json.pergunta.split(\" \")[0] }}",
+              "fieldValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        384
+      ],
+      "id": "e3959a33-0e7d-4757-9c6c-24d1d6666371",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "respostas.respostas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        560,
+        304
+      ],
+      "id": "8d61bcc9-e3fb-4ccc-b921-400c3bd70c48",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Inputs').item.json.remoteJid }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        -1296,
+        944
+      ],
+      "id": "f56b40fd-a6e6-410f-9d96-d562ec4a6cb2",
+      "name": "Redis Chat Memory"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "207d9a7c-c847-492f-8f22-9bd2ba561887",
+              "name": "respostas",
+              "value": "={\n  \"respostas\": {\n    \"Q1\": { \n      \"pergunta\": \"{{ $('Perguntas').item.json.Q1 }}\",\n      \"resposta\": \"{{ $('Consulta BD').item.json.Q1 }}\"\n    },\n    \"Q2\": { \n      \"pergunta\": \"{{ $('Perguntas').item.json.Q2 }}\",\n      \"resposta\": \"{{ $('Consulta BD').item.json.Q2 }}\"\n    },\n    \"Q3\": { \n      \"pergunta\": \"{{ $('Perguntas').item.json.Q3 }}\",\n      \"resposta\": \"{{ $('Consulta BD').item.json.Q3 }}\"\n    },\n    \"Q4\": { \n      \"pergunta\": \"{{ $('Perguntas').item.json.Q4 }}\",\n      \"resposta\": \"{{ $('Consulta BD').item.json.Nota_Q4 }}\"\n    },\n    \"Q5\": { \n      \"pergunta\": \"{{ $('Perguntas').item.json.Q5 }}\",\n      \"resposta\": \"{{ $('Consulta BD').item.json.Q5 }}\"\n    }\n  }\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        304
+      ],
+      "id": "05517fd5-b2e8-49b5-968e-1ca62ac091ff",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3fdbc40e-708d-403f-85d1-39c88b145e6d",
+              "name": "Q1",
+              "value": "=Q1 - O que levou você a considerar soluções como a nossa?",
+              "type": "string"
+            },
+            {
+              "id": "165051ce-e19b-413f-92f9-74412d6a7e71",
+              "name": "Q2",
+              "value": "=Q2 - Qual o maior desafio que sua empresa enfrenta atualmente na área?",
+              "type": "string"
+            },
+            {
+              "id": "3a26c6fb-4e23-45db-b8e7-1cf0ae9881fc",
+              "name": "Q3",
+              "value": "=Q3 - Vocês já têm algum sistema ou processo implementado para resolver esse problema?",
+              "type": "string"
+            },
+            {
+              "id": "8ac41102-e2a6-4179-8c69-5b8df6a607a8",
+              "name": "Q4",
+              "value": "=Q4 - Quais são as metas principais que sua equipe deseja alcançar nos próximos meses?",
+              "type": "string"
+            },
+            {
+              "id": "db0097bc-506e-4a29-a5c3-42e8a514d291",
+              "name": "Q5",
+              "value": "Q5 - Quem geralmente toma as decisões para implementar novas soluções na sua empresa?",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3568,
+        704
+      ],
+      "id": "d8a16ced-9204-45dd-9d54-904c3c00d413",
+      "name": "Perguntas"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Consulta BD').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "=Nota_{{ $json.pergunta.split(\" \")[0] }}",
+              "fieldValue": "5"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        624
+      ],
+      "id": "868b8b06-ffd4-4fad-88d0-2ac8b79ff06b",
+      "name": "Supabase3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('Consulta BD').item.json.remoteJid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "=Nota_{{ $json.pergunta.split(\" \")[0] }}",
+              "fieldValue": "10"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        832
+      ],
+      "id": "5d37decf-8c13-4de0-8cb1-83dd055b595f",
+      "name": "Supabase4"
+    },
+    {
+      "parameters": {
+        "content": "# Gatilhos para Teste",
+        "height": 760,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -4736,
+        368
+      ],
+      "id": "7c92271a-8dc1-4c1e-bfa9-8fc6d54a7a4f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Conecte aqui os dados de entrada",
+        "height": 320,
+        "width": 360,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -4144,
+        608
+      ],
+      "id": "7552d694-963f-43a4-ad7e-b4a5a8a5174c",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Customize as perguntas\nIMPORTANTE: Mantenha o prefixo Q1, Q2... em cada pergunta",
+        "height": 320,
+        "width": 360,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3696,
+        608
+      ],
+      "id": "05929930-5ace-4506-b6e5-046dd3786e48",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Cadastra o Lead no Supabase",
+        "height": 500,
+        "width": 680,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2384,
+        592
+      ],
+      "id": "ef0d23f1-f260-4a42-80a5-0ca39480c53a",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Aplica as perguntas",
+        "height": 500,
+        "width": 1180,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1536,
+        592
+      ],
+      "id": "e162d850-ecc1-4307-a670-f8ccfc3b5944",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Avalia e pontua as respostas",
+        "height": 1080,
+        "width": 2180,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8f24875d-44c6-4cfb-873a-fc4042c38454",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Customize a Avaliação\n",
+        "height": 320,
+        "width": 360,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3264,
+        608
+      ],
+      "id": "3e31a063-f90c-4b35-8f91-85457cb66c85",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3fdbc40e-708d-403f-85d1-39c88b145e6d",
+              "name": "Frio - \"Até o valor abaixo\"",
+              "value": "=15",
+              "type": "number"
+            },
+            {
+              "id": "165051ce-e19b-413f-92f9-74412d6a7e71",
+              "name": "=Morno - \"Até o valor abaixo\"",
+              "value": "=35",
+              "type": "number"
+            },
+            {
+              "id": "3a26c6fb-4e23-45db-b8e7-1cf0ae9881fc",
+              "name": "Quente - \"Acima do valor abaixo\"",
+              "value": "=35",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3120,
+        704
+      ],
+      "id": "40394d79-095e-4da2-a956-302f40574e8a",
+      "name": "Regras de Avaliação"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.NotaTotal }}",
+                    "rightValue": "={{ $('Regras de Avaliação').item.json['Frio - \"Até o valor abaixo\"'] }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    },
+                    "id": "7c6cc338-4b13-4978-a52e-5f64fb6ee73e"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "=Frio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5eb5c8f5-d056-4c72-a187-3653071c3e98",
+                    "leftValue": "={{ $json.NotaTotal }}",
+                    "rightValue": "={{ $('Regras de Avaliação').item.json['Morno - \"Até o valor abaixo\"'] }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "=Morno"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "22197126-e6e2-47f3-a4e7-305129f8fff4",
+                    "leftValue": "={{ $json.NotaTotal }}",
+                    "rightValue": "={{ $('Regras de Avaliação').item.json['Quente - \"Acima do valor abaixo\"'] }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "=Quente"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2400,
+        160
+      ],
+      "id": "2bbb88de-9bc0-43fa-88ae-f1310fcf946d",
+      "name": "Switch",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Triagem",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('Dados Entrada').item.json.remoteJid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        160
+      ],
+      "id": "24d9ff84-0020-478c-a77a-74a3f0427e24",
+      "name": "Consulta BD1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c26ffddd-323b-49de-882b-d63d5be89766",
+              "name": "avaliacao",
+              "value": "=O contato {{ $json.remoteJid }}, foi avaliado como um lead Quente",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2752,
+        320
+      ],
+      "id": "1e84e8fd-b508-415b-b288-e4f288bcdec4",
+      "name": "Quente"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c26ffddd-323b-49de-882b-d63d5be89766",
+              "name": "avaliacao",
+              "value": "=O contato {{ $json.remoteJid }}, foi avaliado como um lead Frio",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2752,
+        0
+      ],
+      "id": "cb24c956-681f-41aa-a1af-276dc0cbf9b8",
+      "name": "Frio"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c26ffddd-323b-49de-882b-d63d5be89766",
+              "name": "avaliacao",
+              "value": "=O contato {{ $json.remoteJid }}, foi avaliado como um lead Morno",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2752,
+        160
+      ],
+      "id": "02559ad4-3fb8-4f2a-a969-7334d373042e",
+      "name": "Morno"
+    },
+    {
+      "parameters": {
+        "content": "# Avaliação",
+        "height": 500,
+        "width": 700,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        0
+      ],
+      "id": "7520d0f1-1309-4b2d-b613-942cee2eeb8a",
+      "name": "Sticky Note7"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "respostas": {
+            "respostas": {
+              "Q1": {
+                "pergunta": "Q1 - O que levou você a considerar soluções como a nossa?",
+                "resposta": "a sua marca é forte"
+              },
+              "Q2": {
+                "pergunta": "Q2 - Qual o maior desafio que sua empresa enfrenta atualmente na área?",
+                "resposta": "organizar as atividades que precisamos fazer"
+              },
+              "Q3": {
+                "pergunta": "Q3 - Vocês já têm algum sistema ou processo implementado para resolver esse problema?",
+                "resposta": "ainda não"
+              },
+              "Q4": {
+                "pergunta": "Q4 - Quais são as metas principais que sua equipe deseja alcançar nos próximos meses?",
+                "resposta": ""
+              },
+              "Q5": {
+                "pergunta": "Q5 - Quem geralmente toma as decisões para implementar novas soluções na sua empresa?",
+                "resposta": "eu mesmo"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-28T19:15:33.369Z",
+      "updatedAt": "2025-06-28T19:15:33.369Z",
+      "id": "ArPLMIVlQaQOnYDx",
+      "name": "AI Builders Suporte"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-27T18:30:51.973Z",
+  "versionId": "f2568797-e9c1-411e-9d8e-5268ddc24623"
+}
