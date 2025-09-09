@@ -1,0 +1,2237 @@
+{
+  "active": true,
+  "connections": {
+    "Set - Processar Resposta": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Salvar Resumo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Processar com IA1": {
+      "main": [
+        [
+          {
+            "node": "Execution Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Salvar Resumo1": {
+      "main": [
+        [
+          {
+            "node": "Respond - Sucesso1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron - A cada 10 minutos - Gerar newsletters": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Buscar Grupos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Tem grupos para processar?1": {
+      "main": [
+        [
+          {
+            "node": "Code - Separar Grupos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Separar Grupos1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Buscar Mensagens do Dia1": {
+      "main": [
+        [
+          {
+            "node": "IF - Tem mensagens para processar?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Tem mensagens para processar?1": {
+      "main": [
+        [
+          {
+            "node": "HTTP - Chamar Processamento IA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Marcar Mensagens Processadas1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP - Chamar Processamento IA": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Marcar Mensagens Processadas1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Buscar Grupos1": {
+      "main": [
+        [
+          {
+            "node": "IF - Tem grupos para processar?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Set - Processar Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond - Sucesso1": {
+      "main": [
+        []
+      ]
+    },
+    "Execution Data": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Buscar Mensagens do Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data1": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Buscar Resumos Pendentes3": {
+      "main": [
+        [
+          {
+            "node": "IF - Tem resumos para enviar?2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Tem resumos para enviar?2": {
+      "main": [
+        [
+          {
+            "node": "Code - Separar Resumos2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Separar Resumos2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Preparar Envio2": {
+      "main": [
+        [
+          {
+            "node": "Execution Data4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Processar Resultado2": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Atualizar Status2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Atualizar Status2": {
+      "main": [
+        [
+          {
+            "node": "Code - Log Resultado2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Log Resultado2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "uazapi - send newsletter2": {
+      "main": [
+        [
+          {
+            "node": "Code - Processar Resultado2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code - Processar Resultado2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron - A cada 10 minutos - Enviar msg2": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Buscar Resumos Pendentes3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code - Preparar Envio2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data4": {
+      "main": [
+        [
+          {
+            "node": "uazapi - send newsletter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-22T22:18:02.651Z",
+  "id": "IE2kiLliwnm23JCG",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "4. Gerador de resumos",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "assign1",
+              "name": "group_id",
+              "value": "={{ $('Webhook - Processar com IA1').item.json.body.group_data.group_id }}",
+              "type": "number"
+            },
+            {
+              "id": "assign2",
+              "name": "group_name",
+              "value": "={{ $('Webhook - Processar com IA1').item.json.body.group_data.name }}",
+              "type": "string"
+            },
+            {
+              "id": "assign3",
+              "name": "chat_id",
+              "value": "={{ $('Webhook - Processar com IA1').item.json.body.group_data.chat_id }}",
+              "type": "string"
+            },
+            {
+              "id": "assign4",
+              "name": "summary_date",
+              "value": "={{ new Date().toLocaleDateString('en-CA') }}",
+              "type": "string"
+            },
+            {
+              "id": "assign5",
+              "name": "total_messages",
+              "value": "={{ $('Webhook - Processar com IA1').item.json.body.group_data.total_messages }}",
+              "type": "number"
+            },
+            {
+              "id": "assign6",
+              "name": "summary_content",
+              "value": "=📋 *Resumo das conversas de hoje no grupo {{ $('Webhook - Processar com IA1').item.json.body.group_data.name }}*\n\n{{ $json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "assign7",
+              "name": "destination_type",
+              "value": "={{ $('Webhook - Processar com IA1').item.json.body.group_data.destination_type }}",
+              "type": "string"
+            },
+            {
+              "id": "assign8",
+              "name": "destination_value",
+              "value": "={{ $('Webhook - Processar com IA1').item.json.body.group_data.destination_value }}",
+              "type": "string"
+            },
+            {
+              "id": "assign9",
+              "name": "processed_at",
+              "value": "={{ new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}) }}",
+              "type": "string"
+            },
+            {
+              "id": "assign10",
+              "name": "success",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8ce67d44-cb71-4b16-a72a-d93898241849",
+      "name": "Set - Processar Resposta",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        688
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-summary-ia",
+        "authentication": "basicAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "288952c2-efdb-41ae-8329-bfeec5ae5996",
+      "name": "Webhook - Processar com IA1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1488,
+        688
+      ],
+      "webhookId": "550e8400-e29b-41d4-a716-446655440099",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "aYNQrgzWrBYuEXjs",
+          "name": "m7 auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH ins AS (\n    INSERT INTO daily_summaries (\n        group_id,\n        summary_date,\n        total_messages,\n        total_members_active,\n        summary_content,\n        send_status,\n        created_at\n    ) \n    VALUES (\n        $1::INTEGER,\n        $2::DATE,\n        $3::INTEGER,\n        (\n            SELECT COUNT(DISTINCT member_id) \n            FROM messages \n            WHERE group_id = $1::INTEGER \n            AND (timestamp AT TIME ZONE 'America/Sao_Paulo')::DATE = $2::DATE\n        ),\n        ($4::JSONB->>'content')::TEXT,\n        'pending',\n        NOW() AT TIME ZONE 'America/Sao_Paulo'\n    )\n    RETURNING\n        'created'::TEXT AS status,\n        id,\n        group_id,\n        summary_date,\n        total_messages,\n        send_status,\n        created_at AT TIME ZONE 'America/Sao_Paulo' AS created_at_brasilia\n)\nSELECT json_agg(ins) FROM ins;\n",
+        "options": {
+          "queryReplacement": "={{ $json.group_id }}, {{ $json.summary_date }}, {{ $json.total_messages }}, {{ JSON.stringify({content: $json.summary_content}) }}"
+        }
+      },
+      "id": "4075ab94-e512-4931-ab31-a93a7c1a5144",
+      "name": "PostgreSQL - Salvar Resumo1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -16,
+        688
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "SbtFPUSvZAXXVYmb",
+          "name": "Postgres - m7 growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.json_agg }}",
+        "options": {}
+      },
+      "id": "970faf2b-8cb6-4898-8faf-5b490217d833",
+      "name": "Respond - Sucesso1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        688
+      ]
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 10,
+              "unit": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "4838fc21-3b9b-4a97-ac42-e3e630080434",
+      "name": "Cron - A cada 10 minutos - Gerar newsletters",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -1488,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Buscar grupos para resumo",
+        "height": 80,
+        "width": 400,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1520,
+        16
+      ],
+      "id": "cf93410c-d687-434f-9d24-bac19669c6f1",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Gerar resumos",
+        "height": 80,
+        "width": 400,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1520,
+        560
+      ],
+      "id": "5d47e916-e316-4acb-ace6-2d0b97e4efa8",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Enviar os resumos gerados",
+        "height": 80,
+        "width": 400,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1520,
+        1088
+      ],
+      "id": "9e6472c9-4d76-4c6d-ab7b-b53d7946ce10",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- QUERY CORRIGIDA FINAL: Buscar grupos para resumo diário\nWITH configuracoes AS (\n    SELECT \n        NOW() AT TIME ZONE 'America/Sao_Paulo' as agora_sp,\n        (NOW() AT TIME ZONE 'America/Sao_Paulo')::DATE as hoje_sp,\n        (NOW() AT TIME ZONE 'America/Sao_Paulo')::TIME as hora_atual_sp,\n        ((NOW() AT TIME ZONE 'America/Sao_Paulo') + INTERVAL '10 minutes')::TIME as hora_limite_sp\n),\ngrupos_pendentes_resumo AS (\n    SELECT \n        g.id,\n        g.chat_id,\n        g.name,\n        g.summary_destination_type,\n        g.summary_destination_value,\n        g.summary_send_time,\n        -- Contar mensagens válidas do dia\n        (\n            SELECT COUNT(*) \n            FROM messages m \n            WHERE m.group_id = g.id \n            AND DATE(m.timestamp AT TIME ZONE 'America/Sao_Paulo') = (SELECT hoje_sp FROM configuracoes)\n            AND EXTRACT(YEAR FROM m.timestamp) BETWEEN 2020 AND 2030\n            AND m.type != 'reaction'\n        ) as total_messages,\n        -- Contar membros ativos no dia\n        (\n            SELECT COUNT(DISTINCT m.member_id) \n            FROM messages m \n            WHERE m.group_id = g.id \n            AND DATE(m.timestamp AT TIME ZONE 'America/Sao_Paulo') = (SELECT hoje_sp FROM configuracoes)\n            AND EXTRACT(YEAR FROM m.timestamp) BETWEEN 2020 AND 2030\n            AND m.type != 'reaction'\n        ) as active_members\n    FROM groups g, configuracoes c\n    WHERE \n        g.daily_summary_enabled = true\n        AND g.auto_send_summary_enabled = true\n        AND g.status = 'active'\n        -- Horário de envio deve estar entre 00:00 e (agora + 10 minutos)\n        AND g.summary_send_time >= '00:00:00'::TIME\n        AND g.summary_send_time <= c.hora_limite_sp\n        -- NÃO existe resumo para HOJE (usando a data correta)\n        AND NOT EXISTS (\n            SELECT 1 \n            FROM daily_summaries ds \n            WHERE ds.group_id = g.id \n            AND ds.summary_date = (SELECT hoje_sp FROM configuracoes)\n        )\n)\nSELECT \n    json_build_object(\n        'status', CASE WHEN COUNT(*) > 0 THEN 'groups_found' ELSE 'no_groups_in_time_window' END,\n        'execution_info', json_build_object(\n            'timestamp', (SELECT agora_sp FROM configuracoes),\n            'current_date', (SELECT hoje_sp FROM configuracoes),\n            'current_time', (SELECT hora_atual_sp FROM configuracoes),\n            'time_limit', (SELECT hora_limite_sp FROM configuracoes),\n            'time_window', '00:00:00 até ' || (SELECT hora_limite_sp::TEXT FROM configuracoes),\n            'total_groups', COUNT(*)\n        ),\n        'groups', COALESCE(\n            json_agg(\n                json_build_object(\n                    'group_id', id,\n                    'chat_id', chat_id,\n                    'name', name,\n                    'destination', json_build_object(\n                        'type', summary_destination_type,\n                        'value', COALESCE(summary_destination_value, chat_id),\n                        'send_to', CASE \n                            WHEN summary_destination_type = 'group' THEN 'Enviar para o próprio grupo'\n                            WHEN summary_destination_type = 'phone' THEN 'Enviar para número específico'\n                            ELSE 'Configuração desconhecida'\n                        END\n                    ),\n                    'scheduled_time', summary_send_time,\n                    'activity_stats', json_build_object(\n                        'total_messages', total_messages,\n                        'active_members', active_members,\n                        'has_activity', total_messages > 0\n                    ),\n                    'ready_for_summary', true\n                ) ORDER BY summary_send_time, name\n            ) FILTER (WHERE id IS NOT NULL),\n            '[]'::json\n        )\n    ) as resultado\nFROM grupos_pendentes_resumo;",
+        "options": {}
+      },
+      "id": "896944d3-f309-4d56-8406-5e3704fc6c00",
+      "name": "PostgreSQL - Buscar Grupos1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1248,
+        144
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "SbtFPUSvZAXXVYmb",
+          "name": "Postgres - m7 growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "550e8400-e29b-41d4-a716-446655440003",
+              "leftValue": "={{ $json.resultado.status }}",
+              "rightValue": "groups_found",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "77ccaaf1-6bcc-46d2-93e7-e23c9b83ec8b",
+      "name": "IF - Tem grupos para processar?1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1056,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pega o resultado da query\nconst queryResult = items[0].json;\n\n// Verifica se a estrutura existe\nif (!queryResult || !queryResult.resultado) {\n  return [{\n    json: {\n      status: 'invalid_data',\n      message: 'Estrutura de dados inválida'\n    }\n  }];\n}\n\n// Extrai os grupos do resultado\nconst grupos = queryResult.resultado.groups || [];\n\n// Se não houver grupos, retorna mensagem\nif (grupos.length === 0) {\n  return [{\n    json: {\n      status: 'no_groups_found',\n      message: 'Nenhum grupo encontrado na janela de tempo especificada'\n    }\n  }];\n}\n\n// Extrai informações de execução com valores padrão\nconst executionInfo = queryResult.resultado.execution_info || {};\nconst currentDate = executionInfo.current_date || new Date().toISOString().split('T')[0];\nconst timestamp = executionInfo.timestamp || new Date().toISOString();\n\n// Mapeia cada grupo para um item separado\nreturn grupos.map(grupo => ({\n  json: {\n    group_id: grupo.group_id,\n    chat_id: grupo.chat_id,\n    name: grupo.name,\n    destination_type: grupo.destination.type,\n    destination_value: grupo.destination.value,\n    scheduled_time: grupo.scheduled_time,\n    total_messages: grupo.activity_stats.total_messages,\n    active_members: grupo.activity_stats.active_members,\n    has_activity: grupo.activity_stats.has_activity,\n    summary_date: currentDate,\n    execution_timestamp: timestamp\n  }\n}));"
+      },
+      "id": "528748c9-30f3-4cd6-ac2c-9246d9cf34dc",
+      "name": "Code - Separar Grupos1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -832,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Buscar mensagens do dia que não foram processadas para newsletter\nWITH messages_to_process AS (\n    SELECT \n        m.id,\n        m.message_id,\n        m.message,\n        m.type,\n        m.timestamp,\n        m.response_to,\n        mem.name as member_name,\n        mem.phone as member_phone\n    FROM messages m\n    JOIN members mem ON m.member_id = mem.id\n    WHERE \n        m.group_id = $1::INTEGER\n        AND m.timestamp::DATE = CURRENT_DATE\n        AND m.newsletter_processed = false\n        AND m.type IN ('text', 'audio', 'image', 'video', 'document')\n        AND m.message IS NOT NULL\n        AND LENGTH(TRIM(m.message)) > 0\n    ORDER BY m.timestamp ASC\n)\nSELECT \n    json_build_object(\n        'status', CASE WHEN COUNT(*) > 0 THEN 'found' ELSE 'no_messages' END,\n        'group_id', $1::INTEGER,\n        'total_messages', COUNT(*),\n        'messages', json_agg(\n            json_build_object(\n                'id', id,\n                'message_id', message_id,\n                'message', message,\n                'type', type,\n                'timestamp', timestamp,\n                'response_to', response_to,\n                'member_name', member_name,\n                'member_phone', member_phone\n            )\n        ) FILTER (WHERE id IS NOT NULL),\n        'message_ids', array_agg(id) FILTER (WHERE id IS NOT NULL)\n    ) as resultado\nFROM messages_to_process;",
+        "options": {
+          "queryReplacement": "={{ $json.group_id }}"
+        }
+      },
+      "id": "1cb57a49-cae4-457b-b0aa-f77f3105e163",
+      "name": "PostgreSQL - Buscar Mensagens do Dia1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -208,
+        144
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "SbtFPUSvZAXXVYmb",
+          "name": "Postgres - m7 growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "550e8400-e29b-41d4-a716-446655440007",
+              "leftValue": "={{ $json.resultado.status }}",
+              "rightValue": "found",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "5684abce-7fe0-44eb-8339-eb5aa9b72b67",
+              "leftValue": "={{ $json.resultado.total_messages }}",
+              "rightValue": 5,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "92dd9c8b-9b11-4d8e-bab7-436e862bfa27",
+      "name": "IF - Tem mensagens para processar?1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        16,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Marcar TODAS as mensagens anteriores a hoje como processadas (CORRIGIDO)\nUPDATE messages \nSET \n    newsletter_processed = true,\n    newsletter_processed_at = NOW() AT TIME ZONE 'America/Sao_Paulo'\nWHERE group_id = $1::INTEGER \n  AND (timestamp AT TIME ZONE 'America/Sao_Paulo')::DATE < (NOW() AT TIME ZONE 'America/Sao_Paulo')::DATE\n  AND newsletter_processed = false\n  AND type IN ('text', 'audio', 'image', 'video', 'document')\n  AND message IS NOT NULL\nRETURNING \n    json_build_object(\n        'status', 'historical_messages_processed',\n        'group_id', group_id,\n        'processed_date', (NOW() AT TIME ZONE 'America/Sao_Paulo')::DATE,\n        'message_id', id,\n        'note', 'Mensagem histórica marcada como processada'\n    ) as resultado;",
+        "options": {
+          "queryReplacement": "={{ $json.group_id }}"
+        }
+      },
+      "id": "0f6033fb-5e44-410e-8b26-8915ea31d764",
+      "name": "PostgreSQL - Marcar Mensagens Processadas1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        480,
+        160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "SbtFPUSvZAXXVYmb",
+          "name": "Postgres - m7 growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.m7growth.com/webhook/process-summary-ia",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "group_data",
+              "value": "={{ $('Code - Separar Grupos1').item.json }}"
+            },
+            {
+              "name": "messages_data",
+              "value": "={{ $('PostgreSQL - Buscar Mensagens do Dia1').item.json.resultado }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "55f52b93-f189-497a-8ae8-627962cef4c1",
+      "name": "HTTP - Chamar Processamento IA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        256,
+        144
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "aYNQrgzWrBYuEXjs",
+          "name": "m7 auth"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -608,
+        144
+      ],
+      "id": "1f096191-9dcb-4c2d-a8cc-482e31c3f45c",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "id"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=VOcê é um exímio assistente de resumo de conversas de chat que trás um contexto do que os membros conversaram ou debateram no grupo de whats\n.\nVocê irá resumir a conversa, destacando por tópicos informando em parágrafos quais são os assuntos, o que cada membro está falando, o conteúdo e principalmente sugestões de links caso tenha.\n\nSeja direto na entrega do tópico, foque no resultado da conversa.\nPontue as dicas, insights, sugestões e ações caso tenha. Isso é importante. Se não houver, traga os assuntos diversos e animados do grupo.\nPriorize links de cada topico caso tenha\nresuma os tópicos em formato de parágrafos\nEnfatize na mensagem caso ela tenha sido em áudio\n\nIgnore apresentações\nJamais critique os usuários, nunca!\n---\n\nPontue cada tópico com o que foi dito e concluido pelos membros. Priorize as conclusões e insigths. Caso tenha muitas conversas, pegue as mais importantes seguindo o tom do grupo. \nPiorize os links sugeridos para cada topico caso tenha\n\n!importente: caso não tenha links no topico jamais invente e não dê exemplos. Apenas informe sobre links se realmente houver e forem úteis!\nrespeite e informe corretamente os horários dos tópicos\nelimine assuntos que possam ter gerado desconforto entre os membros\nVocê receberá as mensagens em ordem com o horário do último resumo até o horário da última mensagem, mantenha a ordem.\nnão esqueça de mencionar caso a mensagem tenha sido em áudio\ne tente pegar assuntos dos mais variados horários possíveis\n\n---\nelimine mensagens repetidas\n\nPontue o máximo de tópicos abordados detalhando o que foi dito entre os membros\nJamais invente algo e mantenha o seu resumo fiel ao que o usuário disse.",
+              "role": "system"
+            },
+            {
+              "content": "=Faça um resumo conciso da seguinte conversa. START:\nConversa:\n\n{{ $json.body.messages_data.messages.map(msg => {\n  // Converte timestamp para horário de São Paulo\n  const date = new Date(msg.timestamp);\n  const spTime = new Date(date.toLocaleString(\"en-US\", {timeZone: \"America/Sao_Paulo\"}));\n  const hours = String(spTime.getHours()).padStart(2, '0');\n  const minutes = String(spTime.getMinutes()).padStart(2, '0');\n  const time = `[${hours}:${minutes}]`;\n  \n  // Pega o primeiro nome\n  const firstName = msg.member_name.split(' ')[0];\n  \n  // Processa o conteúdo\n  let content = msg.message || '';\n  \n  // Remove aspas extras e decodifica HTML entities\n  content = content.replace(/^\"|\"$/g, '').replace(/&#44;/g, ',');\n  \n  // Se for áudio e tiver transcrição, adiciona indicador\n  if (msg.type === 'audio' && content) {\n    content = `[audio] ${content}`;\n  } else if (!content) {\n    // Se não tiver conteúdo, indica o tipo\n    if (msg.type === 'image') content = '[imagem]';\n    else if (msg.type === 'video') content = '[vídeo]';\n    else if (msg.type === 'document') content = '[documento]';\n    else if (msg.type === 'sticker') content = '[sticker]';\n    else if (msg.type === 'audio') content = '[audio sem transcrição]';\n    else content = `[${msg.type}]`;\n  }\n  \n  return `${time} ${firstName}: ${content}`;\n}).join('\\n') }}"
+            }
+          ]
+        },
+        "simplify": "={{ true }}",
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "abeff4e1-dac4-46d7-9655-41bc5309f3bc",
+      "name": "Message a model",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        -1040,
+        688
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "id"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Você é um assistente que cria uma newsletters baseada na conversa do grupo e posta anunciando a newsletter do grupo e trazendo os resumos dos tópicos abordados pelos membros\n\n- Inclua emojis em todos os tópicos\n- não use markdown, apenas deixe os títulos em *negrito*\n- contextualize brevemente cada assunto, incluindo o que os membros disseram e seus insights\n- seu tom: informativo\n- seu estilo: ...\n\n- é interessante ter no resumo conteúdos desse tipo: exemplos a colocar\n\n- elimine completamente no resumo conteúdos desse tipo: nenhum por enquanto\n\nObserve a sequencia de horários das mensagens e mantenha a ordem dos tópicos seguindo o horário corretamente\nA newsletter precisa conter apenas os tópicos e uma lista de links importantes no fim mantendo a originalidade do conteúdo da conversa.",
+              "role": "system"
+            },
+            {
+              "content": "=Faça um outline das conversas enviadas para você.\n      Nomeie os tópicos dessa forma: \n      (emoji) Título do tópico/assunto (horário hh:mm):\n\n      Termine os parágrafos mostrando a dica, ação ou sugestões apresentadas\nPriorize links sugeridos para cada topico caso tenha, informe no corpo do topico\nFaça um paragrafo para cada topico, insira as informações neste parágrafo de {{ $('Webhook - Processar com IA1').item.json.body.group_data.total_messages > 140 ? \"25~45\" :\n( $('Webhook - Processar com IA1').item.json.body.group_data.total_messages > 80 ? \"35~60\" : \"35~70\") }} palavras\n      \n\n      COMECE: \n{{ $json.message.content }}\n<Fim das mensagens>\n\n<Algumas observaçõpes sobre a newsletter>\n----- Use um emoji no titulo de cada topico!\n----- Caso tenha link, informe o link dentro do topico.\n----- Informe os horários dos tópicos entre parenteses na frente dos titulos do topico\n----- Apenas caso a mensagem tenha sido em audio, enfatize na mensagem. \n----- Caso o tópico tenha informações estatísticas ou algo do tipo, traga essas informações em destaque.\nExplore o máximo de horários, e use apenas os tópicos abordados e nada mais!\nImportante! Não informe a data de hoje\n</fim das observações>\nMantenha um tom conforme as conversas do grupo\n---\nignore mensagens repetidas"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "228f1f90-e64e-435e-9327-c95d23cc0092",
+      "name": "Message a model1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        -640,
+        688
+      ],
+      "executeOnce": false,
+      "retryOnFail": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "group_id",
+              "value": "={{ $json.group_id }}"
+            },
+            {
+              "key": "chat_id",
+              "value": "={{ $json.chat_id }}"
+            },
+            {
+              "key": "total_msg",
+              "value": "={{ $json.total_messages }}"
+            },
+            {
+              "key": "date",
+              "value": "={{ $json.summary_date }}"
+            },
+            {
+              "key": "time",
+              "value": "={{ $json.scheduled_time }}"
+            },
+            {
+              "key": "type",
+              "value": "message_push"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        144
+      ],
+      "id": "85d81834-bff1-4b70-90e3-65fa794e647b",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "group_id",
+              "value": "={{ $json.body.group_data.group_id }}"
+            },
+            {
+              "key": "chat_id",
+              "value": "={{ $json.body.group_data.chat_id }}"
+            },
+            {
+              "key": "total_msg",
+              "value": "={{ $json.body.group_data.total_messages }}"
+            },
+            {
+              "key": "date",
+              "value": "={{ $json.body.group_data.summary_date }}"
+            },
+            {
+              "key": "time",
+              "value": "={{ $json.body.group_data.scheduled_time }}"
+            },
+            {
+              "key": "type",
+              "value": "summary_gen"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -1264,
+        688
+      ],
+      "id": "da1d282c-3f83-4ac5-8a30-1feebbaa1058",
+      "name": "Execution Data1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Buscar resumos pendentes de envio com filtro de data corrigido\nWITH resumos_pendentes AS (\n    SELECT \n        ds.id,\n        ds.group_id,\n        ds.summary_date,\n        ds.summary_content,\n        ds.send_attempts,\n        g.chat_id,\n        g.name as group_name,\n        g.summary_destination_type,\n        g.summary_destination_value,\n        g.summary_send_time,\n        g.instance_id,\n        i.number as instance_number,\n        i.token as instance_token,\n        i.host as instance_host\n    FROM daily_summaries ds\n    JOIN groups g ON ds.group_id = g.id\n    LEFT JOIN instances i ON g.instance_id = i.id\n    WHERE \n        ds.send_status = 'pending'\n        AND g.auto_send_summary_enabled = true\n        AND g.status = 'active'\n        -- Só enviar se passou pelo menos 8 minutos da criação (evitar envios muito rápidos)\n        AND ds.created_at <= NOW() - INTERVAL '8 minutes'\n        -- Limite de 3 tentativas\n        AND ds.send_attempts < 3\n        -- Só processar grupos que têm instância vinculada\n        AND g.instance_id IS NOT NULL\n        AND i.id IS NOT NULL\n        -- NOVA LÓGICA DE FILTRO POR DATA:\n        AND (\n            -- Resumos criados hoje: sempre incluir\n            DATE(ds.created_at AT TIME ZONE 'America/Sao_Paulo') = CURRENT_DATE\n            OR \n            -- Resumos criados ontem: apenas se criados após 23:00\n            (\n                DATE(ds.created_at AT TIME ZONE 'America/Sao_Paulo') = CURRENT_DATE - INTERVAL '1 day'\n                AND EXTRACT(HOUR FROM ds.created_at AT TIME ZONE 'America/Sao_Paulo') >= 23\n            )\n        )\n        -- Ordenar por data mais antiga primeiro\n    ORDER BY ds.created_at ASC\n    LIMIT 10\n)\nSELECT \n    json_build_object(\n        'status', CASE WHEN COUNT(*) > 0 THEN 'found' ELSE 'no_summaries' END,\n        'total_summaries', COUNT(*),\n        'summaries', json_agg(\n            json_build_object(\n                'summary_id', id,\n                'group_id', group_id,\n                'group_name', group_name,\n                'chat_id', chat_id,\n                'summary_date', summary_date,\n                'summary_content', summary_content,\n                'send_attempts', send_attempts,\n                'destination_type', summary_destination_type,\n                'destination_value', summary_destination_value,\n                'send_time', summary_send_time,\n                'instance', json_build_object(\n                    'id', instance_id,\n                    'number', instance_number,\n                    'token', instance_token,\n                    'host', instance_host\n                )\n            )\n        ) FILTER (WHERE id IS NOT NULL)\n    ) as resultado\nFROM resumos_pendentes;",
+        "options": {}
+      },
+      "id": "fb89ecf1-e933-4ce2-8920-b12b781035f6",
+      "name": "PostgreSQL - Buscar Resumos Pendentes3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1264,
+        1264
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "SbtFPUSvZAXXVYmb",
+          "name": "Postgres - m7 growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "660e8400-e29b-41d4-a716-446655440003",
+              "leftValue": "={{ $json.resultado.status }}",
+              "rightValue": "found",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a87b6ee2-a09c-4053-89b4-a47b29a9cd5d",
+      "name": "IF - Tem resumos para enviar?2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1040,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Separar resumos para envio individual\nconst resultado = $input.first().json.resultado;\n\nif (resultado.status !== 'found' || !resultado.summaries) {\n  return [];\n}\n\n// Retornar cada resumo como um item separado\nreturn resultado.summaries.map(summary => ({ json: summary }));"
+      },
+      "id": "b45f0017-574d-453f-ab73-80556be046b6",
+      "name": "Code - Separar Resumos2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -816,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar dados para envio\nconst resumo = $input.first().json;\n\n// Determinar o destino do envio\nlet destinoFinal;\nif (resumo.destination_type === 'phone' && resumo.destination_value) {\n  destinoFinal = resumo.destination_value;\n} else {\n  // Usar o próprio grupo como destino padrão\n  destinoFinal = resumo.chat_id;\n}\n\n// Formatar a mensagem final\nconst dataFormatada = new Date(resumo.summary_date).toLocaleDateString('pt-BR');\nconst mensagemFinal = `${resumo.summary_content}\\n\\n_Esse resumo foi gerado por IA_`;\n\nreturn [{\n  json: {\n    summary_id: resumo.summary_id,\n    group_id: resumo.group_id,\n    group_name: resumo.group_name,\n    destino: destinoFinal,\n    mensagem: mensagemFinal,\n    send_attempts: resumo.send_attempts,\n    summary_date: resumo.summary_date,\n    insance: resumo.instance,\n  }\n}];"
+      },
+      "id": "d353e873-563a-4346-b84f-0c3c0783233a",
+      "name": "Code - Preparar Envio2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -352,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Verificar se o envio foi bem-sucedido\nconst dadosEnvio = $('Code - Preparar Envio2').item.json;\nconst respostaWhatsApp = $input.first().json;\n\n// Determinar se foi sucesso ou falha\nlet statusEnvio, tentativas;\nif (respostaWhatsApp && !respostaWhatsApp.error) {\n  statusEnvio = 'sent';\n  tentativas = dadosEnvio.send_attempts + 1;\n} else {\n  statusEnvio = dadosEnvio.send_attempts >= 2 ? 'failed' : 'pending';\n  tentativas = dadosEnvio.send_attempts + 1;\n}\n\nreturn [{\n  json: {\n    summary_id: dadosEnvio.summary_id,\n    send_status: statusEnvio,\n    send_attempts: tentativas,\n    destination_used: dadosEnvio.destino,\n    sent_at: statusEnvio === 'sent' ? new Date().toISOString() : null,\n    group_name: dadosEnvio.group_name,\n    success: statusEnvio === 'sent'\n  }\n}];"
+      },
+      "id": "cd80d55d-9802-429b-8130-e8dcb2ace8f1",
+      "name": "Code - Processar Resultado2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        256,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Atualizar status do envio na tabela daily_summaries\nUPDATE daily_summaries \nSET \n    send_status = $2::TEXT,\n    send_attempts = $3::INTEGER,\n    sent_at = CASE WHEN $4::TIMESTAMPTZ IS NOT NULL THEN $4::TIMESTAMPTZ ELSE sent_at END,\n    destination_used = $5::TEXT\nWHERE id = $1::INTEGER\nRETURNING \n    json_build_object(\n        'status', 'updated',\n        'summary_id', id,\n        'send_status', send_status,\n        'send_attempts', send_attempts,\n        'sent_at', sent_at\n    ) as resultado;",
+        "options": {
+          "queryReplacement": "={{ $json.summary_id }}, {{ $json.send_status }}, {{ $json.send_attempts }}, {{ $json.sent_at }}, {{ $json.destination_used }}"
+        }
+      },
+      "id": "024f6cfe-f91c-42d7-9ab4-d74f679b826b",
+      "name": "PostgreSQL - Atualizar Status2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        480,
+        1264
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "SbtFPUSvZAXXVYmb",
+          "name": "Postgres - m7 growth"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log do resultado do envio\nconst resultado = $input.first().json.resultado;\nconst dadosEnvio = $('Code - Processar Resultado2').item.json;\n\nif (dadosEnvio.success) {\n  console.log('✅ RESUMO ENVIADO COM SUCESSO');\n  console.log('Grupo:', dadosEnvio.group_name);\n  console.log('ID do resumo:', dadosEnvio.summary_id);\n  console.log('Destino:', dadosEnvio.destination_used);\n  console.log('Enviado em:', dadosEnvio.sent_at);\n} else {\n  console.log('❌ FALHA NO ENVIO');\n  console.log('Grupo:', dadosEnvio.group_name);\n  console.log('ID do resumo:', dadosEnvio.summary_id);\n  console.log('Tentativas:', dadosEnvio.send_attempts);\n  console.log('Status:', dadosEnvio.send_status);\n}\n\nreturn [{ json: dadosEnvio }];"
+      },
+      "id": "475f930b-755f-4b7f-8eba-df180085de68",
+      "name": "Code - Log Resultado2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        704,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.insance.host }}/send/text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "token",
+              "value": "={{ $json.insance.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('PostgreSQL - Buscar Resumos Pendentes3').item.json.resultado.summaries.destination_type == 'group' ? ($json.destino + '@g.us') : $json.destino }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.mensagem.replace(\"**\",\"*\") }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{false}}"
+            },
+            {
+              "name": "readchat",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        48,
+        1264
+      ],
+      "id": "1766ac78-bcf3-40eb-b088-518ea22344d2",
+      "name": "uazapi - send newsletter2",
+      "executeOnce": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 10,
+              "unit": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "584ef707-022d-4879-87bf-51922b7f54d3",
+      "name": "Cron - A cada 10 minutos - Enviar msg2",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -1488,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -608,
+        1264
+      ],
+      "id": "672b15c2-485f-42e2-b7bd-09e7272d1c4d",
+      "name": "Loop Over Items3"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "group_id",
+              "value": "={{ $json.group_id }}"
+            },
+            {
+              "key": "destino",
+              "value": "={{ $json.destino }}"
+            },
+            {
+              "key": "attempt",
+              "value": "={{ $json.send_attempts +1 }}"
+            },
+            {
+              "key": "date",
+              "value": "={{ $json.summary_date }}"
+            },
+            {
+              "key": "type",
+              "value": "send_summary"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -144,
+        1264
+      ],
+      "id": "f6bf43b9-e04c-4851-8b60-a0f65a474fc4",
+      "name": "Execution Data4"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {
+    "Webhook - Processar com IA1": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.m7growth.com",
+            "user-agent": "axios/1.8.3",
+            "content-length": "33662",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "authorization": "Basic cHJpY2luZ2Nhc3RhaTptN3ByaWNpbmc=",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.m7growth.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "420eb2da6efd",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "group_data": {
+              "group_id": 17,
+              "chat_id": "120363403027713163",
+              "name": "M7 Testes | Agente Novo",
+              "destination_type": "group",
+              "destination_value": "120363403027713163",
+              "scheduled_time": "13:20:00",
+              "total_messages": 39,
+              "active_members": 3,
+              "has_activity": true,
+              "summary_date": "2025-07-26",
+              "execution_timestamp": "2025-07-26T13:20:41.445198"
+            },
+            "messages_data": {
+              "status": "found",
+              "group_id": 17,
+              "total_messages": 40,
+              "messages": [
+                {
+                  "id": 327,
+                  "message_id": "3EB01F1ABC2850569CB0C2",
+                  "message": "\"no tally não dá porque ele é um formulario estático, voce só preenche e envia\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T00:38:24+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 341,
+                  "message_id": "FF6A1511E604C35B2F9612D6D8815A10",
+                  "message": "\"@5511915487811 Celular⁩ quais são as principais noticias?\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T04:08:11+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 343,
+                  "message_id": "723A397A80941D0C19401A486E4FBFFE",
+                  "message": "Olá&#44; teste&#44; teste. Um&#44; dois&#44; três&#44; testando.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T04:09:39+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 345,
+                  "message_id": "F894DDD15640FA39A8943C7972C12EF7",
+                  "message": "\"Documento leve\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T04:11:02+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 347,
+                  "message_id": "1A672ED96193572E66E29F36963D7D15",
+                  "message": "Documento PDF: Usando AI & ML Como Ferramenta de Diferenciação de (ou Através de) Pricing e Qualidade – Casos de Uso",
+                  "type": "text",
+                  "timestamp": "2025-07-26T04:14:07+00:00",
+                  "response_to": null,
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 349,
+                  "message_id": "1B62709272420E14BCD9106CF1301EA5",
+                  "message": "Documento PDF: Modelagem de inflação: IA, Machine Learning e modelos tradicionais",
+                  "type": "text",
+                  "timestamp": "2025-07-26T04:16:05+00:00",
+                  "response_to": null,
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 348,
+                  "message_id": "3EB0B81DE1B6AFA6320B0B",
+                  "message": "\"_Conforme política vigente, não processarei nem responderei conteúdos relacionados a currículos, divulgação de vagas, eventos, cursos, mentorias, promoções ou conteúdo semelhante._\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T04:16:22+00:00",
+                  "response_to": "null",
+                  "member_name": "PinAI Zap",
+                  "member_phone": "5511915487811"
+                },
+                {
+                  "id": 353,
+                  "message_id": "D46A2086E86CC543E704CA254DB9E76B",
+                  "message": "Documento PDF: Future of Jobs Report 2025",
+                  "type": "text",
+                  "timestamp": "2025-07-26T11:41:42+00:00",
+                  "response_to": null,
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 355,
+                  "message_id": "F95F6446819E3E9876E441A00DD0133A",
+                  "message": "O Luiz&#44; tudo bem? Bom dia&#44; cara. Uma coisa que eu percebi&#44; ver se é possível fazer um ajuste quando a gente conversa com a gente&#44; né&#44; pra ver o que a gente habilita e desabilita. Duas coisas que eu percebi. Um&#44; se não dá pra que&#44; quando ele pergunta lá as funcionalidades&#44; alguma coisa&#44; se não dá pra pedir pra ele botar um número na frente&#44; porque aí fica fácil que a gente bota número 1&#44; número 2&#44; número 3&#44; tal. Outra&#44; é que a parte tanto de áudio quanto de link não tá por fora. Tipo&#44; eu tenho que ficar perguntando ele pra saber&#44; aí ele fala. E pra mim&#44; são coisas diferentes. Por exemplo&#44; um é transcrição do PDF&#44; transcrição ou resumo do PDF. Outra coisa é resumo de documentos&#44; né&#44; que ele também faz. Outra coisa é análise de imagens&#44; né. Outra coisa é links&#44; né. E aí&#44; eu não sei se é link de qualquer coisa&#44; é link só de YouTube&#44; porque com o tempo eu vou até esquecendo&#44; né&#44; o que dá pra habilitar&#44; o que não dá. Então&#44; eu tive que ficar perguntando&#44; forçando umas duas&#44; três vezes&#44; até ele falar. Não&#44; é imagem&#44; é link&#44; tal&#44; essas coisas&#44; entendeu?",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T11:55:46+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 362,
+                  "message_id": "D2B22D909BA903E78489D718E139B817",
+                  "message": "\"👆@5519994317797\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T13:10:21+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 365,
+                  "message_id": "0AD42C0F4A37769F58309D994D8F36F1",
+                  "message": "Luiz&#44; me tira uma dúvida&#44; para não te ferrar sobre a questão do resumo diário Resumo diário não&#44; das notícias lá O que eu pensei&#44; como aquele meu agente&#44; eu vou talvez descontinuar ele Estava pensando em talvez duplicar ele Aí eu apagar toda aquela parte inicial dele&#44; só deixar o agente Que ele já estava lá parametrizado com o perplexity E aí você botar uma tool do seu Para que quando eu solicitar talvez a pírula do dia Ou algum comando&#44; eu consiga meio que Que eu consiga programar Para que ele mande o resumo O que você acha? Porque aí o agente de IA&#44; ele funcionaria com esse aspecto Fique pensando parecido com esse vídeo aqui Vou te mandar para você ver",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T13:49:05+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 366,
+                  "message_id": "100F1562F0079DBFF157E09AD7667DD7",
+                  "message": "É até desse vídeo que eu tirei a ideia do perplexity.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T13:49:10+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 368,
+                  "message_id": "E1E2CC8A35AB37E8D65B9EE2AEF12F21",
+                  "message": "Outra coisa&#44; será que eu consigo me planejar para fazer o lançamento dele já na segunda? Porque eu vou comprar um outro chip e vou mudar o nome&#44; vou deixar como M7&#44; alguma coisa&#44; eu vou ver aqui o nome porque aí eu vou lançar ele e vou botar ele num outro grupo que é da instituição de ensino que eu dou aula para poder ver como é que ele se comporta&#44; com volumetria&#44; essas coisas.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T13:50:21+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 370,
+                  "message_id": "4FB093E4C0D4408A0585A138BE08BB80",
+                  "message": "Se for o caso&#44; para não ter erro&#44; como vai ser a primeira? Estava pensando se não vale a pena. Até para poder também monitorar o custo&#44; né? Colocar um 4O&#44; algo melhor do que o que a gente colocou&#44; do Mini&#44; só para poder evitar e vir com mais qualidade. E depois eu altero&#44; só para garantir que já crie um impacto&#44; vamos dizer assim&#44; mega positivo&#44; entendeu? Porque eu estava dando uma olhada naquela vez que o meu estourou&#44; por causa de resumo&#44; é porque ele estourou em quantidade de tops&#44; né? Aí eu me lembro que você me sugeriu mudar para um outro&#44; aí eu mudei e funcionou.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T13:51:17+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 373,
+                  "message_id": "B61F9F70C228EF83FFBAAC94616FE28B",
+                  "message": "\"@5511915487811 Pode enviar a pílula do dia completa pf\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T13:55:12+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 375,
+                  "message_id": "599C9A3AF0B9BFA3BF1C402CA72055E3",
+                  "message": "\"@5519994317797 essa é a parte do agente meu que queria, aproveitar e conectar no agente novo. Essa parte seria para *Funcionalidade de Noticias*, que quando que eu quero deixar para habitar um horário, e dessa forma que roda e enviar no grupo.\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:01:31+00:00",
+                  "response_to": "✅ NOTÍCIAS DO DIA: Dia 26-Jul-25",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 376,
+                  "message_id": "DD084A458EC56A81708011FD3189AD9F",
+                  "message": "Porque dessa forma&#44; Luiz&#44; você deixando pelo menos ele conectado lá&#44; se for o caso&#44; pode duplicar&#44; tá? Aí eu vou trabalhando nele&#44; porque aí eu tô investigando bastante o perplexity e tal&#44; aí eu vou colocar ele depois pra poder fazer o resumo no áudio nele mesmo. Aí eu&#44; como eu sei futucar nesse&#44; eu nem futuco talvez na sua outra parte lá pra não destruir nada.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:03:46+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 378,
+                  "message_id": "3EB0978F721E515E78DC89",
+                  "message": "\"bom dia!\najustei para ele explicar melhor sobre as funções caso seja necessario\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:06:35+00:00",
+                  "response_to": "📝Transcrição de áudio compartilhado por _*Fabio Pinheiro:*_\n____\n_O Luiz",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 379,
+                  "message_id": "5B5C33056BC4E117B17EAFD7E754ED9F",
+                  "message": "\"Opa!\nIrei testar.\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:08:07+00:00",
+                  "response_to": "bom dia!\najustei para ele explicar melhor sobre as funções caso seja necessario",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 380,
+                  "message_id": "3EB0A825AFC7D12CF2374E",
+                  "message": "\"o 4o tem só 128 mil tokens, o 4.1-mini é pareado com o 4o em qualidade e tem 1 milhão de tokens, alem de ser mais barato\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:08:44+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 382,
+                  "message_id": "C8DF842BB879B8427116B03CAF77BB48",
+                  "message": "\"Só senti falta da parte do YouTube, que ele faz a transcrição completa e envia o resumo\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:11:01+00:00",
+                  "response_to": "Bom dia! Aqui estão as funcionalidades que você pode ativar ou desativar para qualquer grupo WhatsApp na plataforma:\n\n1. **Status do Grupo**:  \n   - active (ativo): grupo funcional com análise e resumos ativos  \n   - blocked (bloqueado): grupo com acesso restrito",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 384,
+                  "message_id": "3EB05C59CFB3AADA5D8008",
+                  "message": "TIPO: Análise de Imagem/Documento\nDATA PROCESSAMENTO: 2025-07-26T14:12:56.851Z\n\nCONTEÚDO EXTRAÍDO DA IMAGEM (OCR):\n # 3.1 AI - Group + Add tag\n\n## 3.1.1 AI - Group\n\n### 3.1.1.1.1.1.1.1.1.2.2.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.36.37.38.39.40.41.42.43.44.45.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83\n\nANÁLISE ESTRUTURADA DA IA:\n 📋 RESUMO:  \nO conteúdo extraído da imagem corresponde a uma documentação, especificação técnica ou esboço de sistema referente a uma funcionalidade chamada “AI - Group + Add tag”. No entanto, o texto foi preenchido quase que exclusivamente com subitens numerados de forma excessiva e repetitiva, sem informações descritivas, detalhamento de requisitos ou conteúdo relevante.\n\n🔍 PONTOS IMPORTANTES:\n• Estrutura de tópicos sugere um índice ou hierarquia para organização de funcionalidades (“Group” e “Add tag”) dentro de um componente de Inteligência Artificial.  \n• Não há descrições, informações técnicas ou textuais além dos títulos e da numeração.  \n• O conteúdo está desprovido de dados concretos – predominam repetições extensas de numeração (1.1.1.1…).\n\n💡 INSIGHTS/OBSERVAÇÕES:  \nO material aparenta ser um rascunho, placeholder ou resultado de erro na extração/conversão do conteúdo original. Para análise produtiva ou ações práticas, será necessário obter versão mais completa e descritiva do documento. Eventualmente, o foco parece ser funcionalidade de agrupamento e adição de tags via IA, mas não há dados para detalhar requisitos ou fluxos.\n\nTIPO DE CONTEÚDO IDENTIFICADO: undefined\n",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:12:21+00:00",
+                  "response_to": null,
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 383,
+                  "message_id": "3EB084CC2EE9D839EB6BE1",
+                  "message": "\"esse de baixo é um que pode ficar programado. eu mostrei ele la pro min 37 do video\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:12:32+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 385,
+                  "message_id": "3EB0F722B36F8BECD1D369",
+                  "message": "\"hmm ta na mesma parte do prompt. coloquei um reforço pra ele nao esquecer funções\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:14:01+00:00",
+                  "response_to": "Bom dia! Aqui estão as funcionalidades que você pode ativar ou desativar para qualquer grupo WhatsApp na plataforma:\n\n1. **Status do Grupo**:  \n   - active (ativo): grupo funcional com análise e resumos ativos  \n   - blocked (bloqueado): grupo com acesso restrito",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 386,
+                  "message_id": "3EB0B5D84C784FAE2DED5B",
+                  "message": "TIPO: Análise de Imagem/Documento\nDATA PROCESSAMENTO: 2025-07-26T14:14:21.024Z\n\nCONTEÚDO EXTRAÍDO DA IMAGEM (OCR):\n Você pode\n\n- ativar/desativar grupos\n- ativar/desativar a transcrição de áudio\n- ativar/desativar a transcrição (e analise) de imagens e documentos (imagens e documentos no geral são pela opção pdf_summary_enabled)\n- ativar/ desativar o resumo de videos do youtube\n- modificar o tipo de transcrição de audio para\nsimples/detalhado\n- ativar/desativar a geração do resumo da conversa\n- configurar o envio do resumo para o grupo ou algum numero privado\n\nANÁLISE ESTRUTURADA DA IA:\n 📋 RESUMO:  \nO conteúdo apresenta um conjunto de configurações que permitem controlar diversas funcionalidades de um sistema, incluindo transcrição, análise e resumo de mídias (áudio, vídeo, imagens e documentos) e envio de resumos para grupos ou contatos privados.\n\n🔍 PONTOS IMPORTANTES:\n• Possibilidade de ativar ou desativar grupos e funcionalidades específicas (transcrição de áudio, análise de imagens/documentos, resumo de vídeos do YouTube).  \n• Opção de escolher entre transcrição de áudio simples ou detalhada.  \n• Permite configurar se o resumo da conversa será enviado ao grupo ou a um número privado.\n\n💡 INSIGHTS/OBSERVAÇÕES:  \nA flexibilidade dessas opções de configuração é útil para adaptar o sistema a diferentes necessidades, garantindo controle sobre privacidade, automação e detalhamento do processamento de informação, além de facilitar a gestão de resumos em diferentes canais.\n\nTIPO DE CONTEÚDO IDENTIFICADO: undefined\n",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:14:07+00:00",
+                  "response_to": null,
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 388,
+                  "message_id": "F81BE5216FF82CE63C5866E25897736B",
+                  "message": "Estou entrando em uma localidade que talvez não funcione o celular.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:15:53+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 389,
+                  "message_id": "3EB0B59E0C7C67BCD5D37A",
+                  "message": "\"*Transcrição de audio:*\n______\n*Fabio Pinheiro*\n\nEstou entrando em uma localidade que talvez não funcione o celular.\n____\n_*Criado por agente de IA e pode conter erros._\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:16:06+00:00",
+                  "response_to": "null",
+                  "member_name": "PinAI Zap",
+                  "member_phone": "5511915487811"
+                },
+                {
+                  "id": 390,
+                  "message_id": "3EB08300206CC49F16F7FB",
+                  "message": "\"tem o pdf analyser que é o que ativa/desativa o mistral pra analisar imagens e pdf\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:16:20+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 391,
+                  "message_id": "3C164981DDD358984655F25007CBDD89",
+                  "message": "Como eu não recebi nenhum resumo ainda&#44; daria para mandar&#44; sei lá&#44; forçar um resumo de algum grupo só para ver como ficaria a estrutura do resumo? E aí uma dúvida é se a gente pode programar&#44; tipo&#44; dar instruções para ele como deveria ser o resumo. É possível ou não?",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:16:27+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 393,
+                  "message_id": "3EB021E41CB39DFB14CD86",
+                  "message": "\"instruções de como seria o resumo da pra colocar mas é bem complexo\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:17:36+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 394,
+                  "message_id": "05CC6C785EF7316AD3FB290F80FD7C05",
+                  "message": "Não&#44; beleza&#44; se não dá pra separar&#44; deixa quieto. Se desse pra&#44; pelo menos&#44; separar da imagem&#44; já ajudaria. Porque&#44; às vezes&#44; a pessoa manda uma foto do liquidinho de alguém&#44; alguma coisa assim&#44; aí ele acaba... manda uma foto qualquer&#44; meu receio é esse&#44; entendeu?",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:17:37+00:00",
+                  "response_to": "pra eu separar eu tenho que mexer em umas 15 tools e testar tudo de novo e criar um filtro no de documento tambem pra separar só o que é pdf dos outros documentos",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 395,
+                  "message_id": "3EB077F247FF1FA901FB78",
+                  "message": "\"tem que parar uns dias ali pra fazer\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:17:44+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 397,
+                  "message_id": "3EB073F8348EE5492B7D0D",
+                  "message": "Essa parte da imagem&#44; ele está meio caminho feito&#44; porque eu fiz a parte de análise de imagem separada do PDF&#44; dos documentos Então ele está meio que pré-pronto&#44; só que para poder ativar a imagem ou ativar só o documento Aí tem que sentar ali e fazer uma filtragem melhor&#44; só que isso leva mais tempo",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:19:30+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 399,
+                  "message_id": "3EB0FBCC8F6B7061EACDA7",
+                  "message": "Normalmente nos sistemas&#44; a gente coloca a imagem PDF junto&#44; porque é tudo no Mistral. Geralmente o pessoal não pede para dividir. Ali eu deixei separado&#44; porque ele já vem separado da API. Mas para poder colocar a função também de desativar&#44; separado&#44; tem que sentar um tempo ali e fazer. Mas se você quiser&#44; a gente combina aí e dá para fazer também.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:20:03+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 401,
+                  "message_id": "3EB0809696794645F4AD46",
+                  "message": "Nessa imagem&#44; aquele agente que eu te mostrei no fim do vídeo lá que eu te mandei&#44; tá? Aí você pode fazer simplesmente isso. E ali no fim tem dois nós de envio de grupos. Então você pode configurar o envio desse resumo pro grupo. E no começo ali tem um Schedule Trigger&#44; né? Que você consegue configurar um horário. Então&#44; eu imagino que pra você seja mais interessante fazer isso aí. E depois você volta&#44; altera o prompt&#44; vem algum dia e altera. Você tem autonomia pra fazer isso&#44; coloca mais um grupo&#44; muda o horário. É simples fazer isso. Agora&#44; pra colocar dentro do sistema&#44; a gente precisa alterar tudo. Não só fazer o fluxo&#44; que vai ser a parte mais simples. Só que eu vou ter que criar as tools pra você conseguir alterar. Eu vou ter que alterar todas as queries das tools que buscam grupos pra poder trazer. Tanto buscar lá como que tá o status das ferramentas&#44; se tá ativo&#44; se tá inativo. Então eu vou ter que fazer isso pra todas as ferramentas ali do MCP pra você conseguir gerenciar. E&#44; cara&#44; nos últimos dois&#44; três dias&#44; conforme eu fui mudando&#44; eu tive que refazer&#44; refazer&#44; voltar&#44; testar&#44; testar. E eu&#44; praticamente&#44; fiquei só fazendo a mesma coisa. Então&#44; se a gente for&#44; por exemplo&#44; colocar uma funcionalidade que você... Cara&#44; isso aqui precisa pro sistema e eu quero que seja ali. Aí a gente combina e coloca ele ali dentro. Se for uma coisa mais simples&#44; de repente você consegue fazer e não precisa gastar tempo&#44; gastar dinheiro pra colocar ali dentro do sistema. E se for validado&#44; por exemplo&#44; cara&#44; isso aqui o pessoal gostou e eu quero ativar pra todos os grupos. Aí a gente combina e coloca lá dentro do sistema. Que aí o sistema vai começando a ficar com as coisas que são validadas. Com o prompt que já tá validado&#44; por exemplo&#44; com o sistema&#44; uma funcionalidade que já tá validada. E você vai construindo o seu serviço&#44; você pode até vender ele depois. De uma forma que não fica cheio de coisa e coisas que não precisam. Que te custaram e que não vão ter um retorno financeiro&#44; mas&#44; por exemplo&#44; dinheiro. Uau&#44; isso realmente tá legal&#44; sabe?",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:27:45+00:00",
+                  "response_to": "null",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                },
+                {
+                  "id": 403,
+                  "message_id": "84DA27428610A7B1D83F8A18C4649932",
+                  "message": "Não&#44; tranquilo&#44; tranquilo&#44; gosto da ideia. Vamos deixar fora&#44; aí eu crio por fora e depois habilito&#44; não? Não&#44; beleza. Beleza. É... ok. Fechado meu legal.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:39:09+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 405,
+                  "message_id": "3EB09632D93F2952CE81F1",
+                  "message": "\"*Transcrição de audio:*\n______\n*Fabio Pinheiro*\n\nNão",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:39:24+00:00",
+                  "response_to": "aí eu crio por fora e depois abrito. Não",
+                  "member_name": "PinAI Zap",
+                  "member_phone": "5511915487811"
+                },
+                {
+                  "id": 406,
+                  "message_id": "CE6FCB5A6A724851534D6E7143379F3B",
+                  "message": "Só pra entender&#44; essa parte que você fala que é colocar dentro do sistema de telas&#44; seria por causa do MC? Seria por causa disso? Só pra entender mesmo.",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:47:22+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 407,
+                  "message_id": "82FF7CAA7AB5BEFB1EEF97D91FE2E892",
+                  "message": "é muito engraçado vendo as transcrições cara&#44; as diferenças são sutis mas são interessantes de ver",
+                  "type": "audio",
+                  "timestamp": "2025-07-26T14:48:22+00:00",
+                  "response_to": "null",
+                  "member_name": "Fabio Pinheiro",
+                  "member_phone": "5511979714123"
+                },
+                {
+                  "id": 408,
+                  "message_id": "3EB04D8D889FBC6F00635F",
+                  "message": "\"isso, as tabelas e o mcp que controla as tabelas e passa as infos para o agent\"",
+                  "type": "text",
+                  "timestamp": "2025-07-26T14:49:27+00:00",
+                  "response_to": "essa parte que você fala que é colocar dentro do sistema de telas",
+                  "member_name": "Luiz | Sincron IA",
+                  "member_phone": "5519994317797"
+                }
+              ],
+              "message_ids": [
+                327,
+                341,
+                343,
+                345,
+                347,
+                349,
+                348,
+                353,
+                355,
+                362,
+                365,
+                366,
+                368,
+                370,
+                373,
+                375,
+                376,
+                378,
+                379,
+                380,
+                382,
+                384,
+                383,
+                385,
+                386,
+                388,
+                389,
+                390,
+                391,
+                393,
+                394,
+                395,
+                397,
+                399,
+                401,
+                403,
+                405,
+                406,
+                407,
+                408
+              ]
+            }
+          },
+          "webhookUrl": "https://webhook.m7growth.com/webhook/process-summary-ia",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP - Chamar Processamento IA": [
+      {
+        "json": {
+          "status": "created",
+          "summary_id": 6,
+          "group_id": 17,
+          "summary_date": "2025-07-26",
+          "total_messages": 39,
+          "send_status": "pending",
+          "created_at_brasilia": "2025-07-26T13:28:52.596821+00:00"
+        }
+      }
+    ],
+    "PostgreSQL - Buscar Grupos1": [
+      {
+        "json": {
+          "resultado": {
+            "status": "groups_found",
+            "execution_info": {
+              "timestamp": "2025-07-26T13:28:27.22576",
+              "current_date": "2025-07-26",
+              "current_time": "13:28:27.22576",
+              "time_limit": "13:38:27.22576",
+              "time_window": "00:00:00 até 13:38:27.22576",
+              "total_groups": 1
+            },
+            "groups": [
+              {
+                "group_id": 17,
+                "chat_id": "120363403027713163",
+                "name": "M7 Testes | Agente Novo",
+                "destination": {
+                  "type": "group",
+                  "value": "120363403027713163",
+                  "send_to": "Enviar para o próprio grupo"
+                },
+                "scheduled_time": "13:20:00",
+                "activity_stats": {
+                  "total_messages": 39,
+                  "active_members": 3,
+                  "has_activity": true
+                },
+                "ready_for_summary": true
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "PostgreSQL - Buscar Mensagens do Dia1": [
+      {
+        "json": {
+          "resultado": {
+            "status": "found",
+            "group_id": 17,
+            "total_messages": 39,
+            "messages": [
+              {
+                "id": 341,
+                "message_id": "FF6A1511E604C35B2F9612D6D8815A10",
+                "message": "\"@5511915487811 Celular⁩ quais são as principais noticias?\"",
+                "type": "text",
+                "timestamp": "2025-07-26T04:08:11+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 343,
+                "message_id": "723A397A80941D0C19401A486E4FBFFE",
+                "message": "Olá&#44; teste&#44; teste. Um&#44; dois&#44; três&#44; testando.",
+                "type": "audio",
+                "timestamp": "2025-07-26T04:09:39+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 345,
+                "message_id": "F894DDD15640FA39A8943C7972C12EF7",
+                "message": "\"Documento leve\"",
+                "type": "text",
+                "timestamp": "2025-07-26T04:11:02+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 347,
+                "message_id": "1A672ED96193572E66E29F36963D7D15",
+                "message": "Documento PDF: Usando AI & ML Como Ferramenta de Diferenciação de (ou Através de) Pricing e Qualidade – Casos de Uso",
+                "type": "text",
+                "timestamp": "2025-07-26T04:14:07+00:00",
+                "response_to": null,
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 349,
+                "message_id": "1B62709272420E14BCD9106CF1301EA5",
+                "message": "Documento PDF: Modelagem de inflação: IA, Machine Learning e modelos tradicionais",
+                "type": "text",
+                "timestamp": "2025-07-26T04:16:05+00:00",
+                "response_to": null,
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 348,
+                "message_id": "3EB0B81DE1B6AFA6320B0B",
+                "message": "\"_Conforme política vigente, não processarei nem responderei conteúdos relacionados a currículos, divulgação de vagas, eventos, cursos, mentorias, promoções ou conteúdo semelhante._\"",
+                "type": "text",
+                "timestamp": "2025-07-26T04:16:22+00:00",
+                "response_to": "null",
+                "member_name": "PinAI Zap",
+                "member_phone": "5511915487811"
+              },
+              {
+                "id": 353,
+                "message_id": "D46A2086E86CC543E704CA254DB9E76B",
+                "message": "Documento PDF: Future of Jobs Report 2025",
+                "type": "text",
+                "timestamp": "2025-07-26T11:41:42+00:00",
+                "response_to": null,
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 355,
+                "message_id": "F95F6446819E3E9876E441A00DD0133A",
+                "message": "O Luiz&#44; tudo bem? Bom dia&#44; cara. Uma coisa que eu percebi&#44; ver se é possível fazer um ajuste quando a gente conversa com a gente&#44; né&#44; pra ver o que a gente habilita e desabilita. Duas coisas que eu percebi. Um&#44; se não dá pra que&#44; quando ele pergunta lá as funcionalidades&#44; alguma coisa&#44; se não dá pra pedir pra ele botar um número na frente&#44; porque aí fica fácil que a gente bota número 1&#44; número 2&#44; número 3&#44; tal. Outra&#44; é que a parte tanto de áudio quanto de link não tá por fora. Tipo&#44; eu tenho que ficar perguntando ele pra saber&#44; aí ele fala. E pra mim&#44; são coisas diferentes. Por exemplo&#44; um é transcrição do PDF&#44; transcrição ou resumo do PDF. Outra coisa é resumo de documentos&#44; né&#44; que ele também faz. Outra coisa é análise de imagens&#44; né. Outra coisa é links&#44; né. E aí&#44; eu não sei se é link de qualquer coisa&#44; é link só de YouTube&#44; porque com o tempo eu vou até esquecendo&#44; né&#44; o que dá pra habilitar&#44; o que não dá. Então&#44; eu tive que ficar perguntando&#44; forçando umas duas&#44; três vezes&#44; até ele falar. Não&#44; é imagem&#44; é link&#44; tal&#44; essas coisas&#44; entendeu?",
+                "type": "audio",
+                "timestamp": "2025-07-26T11:55:46+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 362,
+                "message_id": "D2B22D909BA903E78489D718E139B817",
+                "message": "\"👆@5519994317797\"",
+                "type": "text",
+                "timestamp": "2025-07-26T13:10:21+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 365,
+                "message_id": "0AD42C0F4A37769F58309D994D8F36F1",
+                "message": "Luiz&#44; me tira uma dúvida&#44; para não te ferrar sobre a questão do resumo diário Resumo diário não&#44; das notícias lá O que eu pensei&#44; como aquele meu agente&#44; eu vou talvez descontinuar ele Estava pensando em talvez duplicar ele Aí eu apagar toda aquela parte inicial dele&#44; só deixar o agente Que ele já estava lá parametrizado com o perplexity E aí você botar uma tool do seu Para que quando eu solicitar talvez a pírula do dia Ou algum comando&#44; eu consiga meio que Que eu consiga programar Para que ele mande o resumo O que você acha? Porque aí o agente de IA&#44; ele funcionaria com esse aspecto Fique pensando parecido com esse vídeo aqui Vou te mandar para você ver",
+                "type": "audio",
+                "timestamp": "2025-07-26T13:49:05+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 366,
+                "message_id": "100F1562F0079DBFF157E09AD7667DD7",
+                "message": "É até desse vídeo que eu tirei a ideia do perplexity.",
+                "type": "audio",
+                "timestamp": "2025-07-26T13:49:10+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 368,
+                "message_id": "E1E2CC8A35AB37E8D65B9EE2AEF12F21",
+                "message": "Outra coisa&#44; será que eu consigo me planejar para fazer o lançamento dele já na segunda? Porque eu vou comprar um outro chip e vou mudar o nome&#44; vou deixar como M7&#44; alguma coisa&#44; eu vou ver aqui o nome porque aí eu vou lançar ele e vou botar ele num outro grupo que é da instituição de ensino que eu dou aula para poder ver como é que ele se comporta&#44; com volumetria&#44; essas coisas.",
+                "type": "audio",
+                "timestamp": "2025-07-26T13:50:21+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 370,
+                "message_id": "4FB093E4C0D4408A0585A138BE08BB80",
+                "message": "Se for o caso&#44; para não ter erro&#44; como vai ser a primeira? Estava pensando se não vale a pena. Até para poder também monitorar o custo&#44; né? Colocar um 4O&#44; algo melhor do que o que a gente colocou&#44; do Mini&#44; só para poder evitar e vir com mais qualidade. E depois eu altero&#44; só para garantir que já crie um impacto&#44; vamos dizer assim&#44; mega positivo&#44; entendeu? Porque eu estava dando uma olhada naquela vez que o meu estourou&#44; por causa de resumo&#44; é porque ele estourou em quantidade de tops&#44; né? Aí eu me lembro que você me sugeriu mudar para um outro&#44; aí eu mudei e funcionou.",
+                "type": "audio",
+                "timestamp": "2025-07-26T13:51:17+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 373,
+                "message_id": "B61F9F70C228EF83FFBAAC94616FE28B",
+                "message": "\"@5511915487811 Pode enviar a pílula do dia completa pf\"",
+                "type": "text",
+                "timestamp": "2025-07-26T13:55:12+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 375,
+                "message_id": "599C9A3AF0B9BFA3BF1C402CA72055E3",
+                "message": "\"@5519994317797 essa é a parte do agente meu que queria, aproveitar e conectar no agente novo. Essa parte seria para *Funcionalidade de Noticias*, que quando que eu quero deixar para habitar um horário, e dessa forma que roda e enviar no grupo.\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:01:31+00:00",
+                "response_to": "✅ NOTÍCIAS DO DIA: Dia 26-Jul-25",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 376,
+                "message_id": "DD084A458EC56A81708011FD3189AD9F",
+                "message": "Porque dessa forma&#44; Luiz&#44; você deixando pelo menos ele conectado lá&#44; se for o caso&#44; pode duplicar&#44; tá? Aí eu vou trabalhando nele&#44; porque aí eu tô investigando bastante o perplexity e tal&#44; aí eu vou colocar ele depois pra poder fazer o resumo no áudio nele mesmo. Aí eu&#44; como eu sei futucar nesse&#44; eu nem futuco talvez na sua outra parte lá pra não destruir nada.",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:03:46+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 378,
+                "message_id": "3EB0978F721E515E78DC89",
+                "message": "\"bom dia!\najustei para ele explicar melhor sobre as funções caso seja necessario\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:06:35+00:00",
+                "response_to": "📝Transcrição de áudio compartilhado por _*Fabio Pinheiro:*_\n____\n_O Luiz",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 379,
+                "message_id": "5B5C33056BC4E117B17EAFD7E754ED9F",
+                "message": "\"Opa!\nIrei testar.\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:08:07+00:00",
+                "response_to": "bom dia!\najustei para ele explicar melhor sobre as funções caso seja necessario",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 380,
+                "message_id": "3EB0A825AFC7D12CF2374E",
+                "message": "\"o 4o tem só 128 mil tokens, o 4.1-mini é pareado com o 4o em qualidade e tem 1 milhão de tokens, alem de ser mais barato\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:08:44+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 382,
+                "message_id": "C8DF842BB879B8427116B03CAF77BB48",
+                "message": "\"Só senti falta da parte do YouTube, que ele faz a transcrição completa e envia o resumo\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:11:01+00:00",
+                "response_to": "Bom dia! Aqui estão as funcionalidades que você pode ativar ou desativar para qualquer grupo WhatsApp na plataforma:\n\n1. **Status do Grupo**:  \n   - active (ativo): grupo funcional com análise e resumos ativos  \n   - blocked (bloqueado): grupo com acesso restrito",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 384,
+                "message_id": "3EB05C59CFB3AADA5D8008",
+                "message": "TIPO: Análise de Imagem/Documento\nDATA PROCESSAMENTO: 2025-07-26T14:12:56.851Z\n\nCONTEÚDO EXTRAÍDO DA IMAGEM (OCR):\n # 3.1 AI - Group + Add tag\n\n## 3.1.1 AI - Group\n\n### 3.1.1.1.1.1.1.1.1.2.2.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.84.85.86.87.88.89.90.90.91.92.93.94.95.96.97.98.99.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.36.37.38.39.40.41.42.43.44.45.36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78.79.80.81.82.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83.83\n\nANÁLISE ESTRUTURADA DA IA:\n 📋 RESUMO:  \nO conteúdo extraído da imagem corresponde a uma documentação, especificação técnica ou esboço de sistema referente a uma funcionalidade chamada “AI - Group + Add tag”. No entanto, o texto foi preenchido quase que exclusivamente com subitens numerados de forma excessiva e repetitiva, sem informações descritivas, detalhamento de requisitos ou conteúdo relevante.\n\n🔍 PONTOS IMPORTANTES:\n• Estrutura de tópicos sugere um índice ou hierarquia para organização de funcionalidades (“Group” e “Add tag”) dentro de um componente de Inteligência Artificial.  \n• Não há descrições, informações técnicas ou textuais além dos títulos e da numeração.  \n• O conteúdo está desprovido de dados concretos – predominam repetições extensas de numeração (1.1.1.1…).\n\n💡 INSIGHTS/OBSERVAÇÕES:  \nO material aparenta ser um rascunho, placeholder ou resultado de erro na extração/conversão do conteúdo original. Para análise produtiva ou ações práticas, será necessário obter versão mais completa e descritiva do documento. Eventualmente, o foco parece ser funcionalidade de agrupamento e adição de tags via IA, mas não há dados para detalhar requisitos ou fluxos.\n\nTIPO DE CONTEÚDO IDENTIFICADO: undefined\n",
+                "type": "text",
+                "timestamp": "2025-07-26T14:12:21+00:00",
+                "response_to": null,
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 383,
+                "message_id": "3EB084CC2EE9D839EB6BE1",
+                "message": "\"esse de baixo é um que pode ficar programado. eu mostrei ele la pro min 37 do video\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:12:32+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 385,
+                "message_id": "3EB0F722B36F8BECD1D369",
+                "message": "\"hmm ta na mesma parte do prompt. coloquei um reforço pra ele nao esquecer funções\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:14:01+00:00",
+                "response_to": "Bom dia! Aqui estão as funcionalidades que você pode ativar ou desativar para qualquer grupo WhatsApp na plataforma:\n\n1. **Status do Grupo**:  \n   - active (ativo): grupo funcional com análise e resumos ativos  \n   - blocked (bloqueado): grupo com acesso restrito",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 386,
+                "message_id": "3EB0B5D84C784FAE2DED5B",
+                "message": "TIPO: Análise de Imagem/Documento\nDATA PROCESSAMENTO: 2025-07-26T14:14:21.024Z\n\nCONTEÚDO EXTRAÍDO DA IMAGEM (OCR):\n Você pode\n\n- ativar/desativar grupos\n- ativar/desativar a transcrição de áudio\n- ativar/desativar a transcrição (e analise) de imagens e documentos (imagens e documentos no geral são pela opção pdf_summary_enabled)\n- ativar/ desativar o resumo de videos do youtube\n- modificar o tipo de transcrição de audio para\nsimples/detalhado\n- ativar/desativar a geração do resumo da conversa\n- configurar o envio do resumo para o grupo ou algum numero privado\n\nANÁLISE ESTRUTURADA DA IA:\n 📋 RESUMO:  \nO conteúdo apresenta um conjunto de configurações que permitem controlar diversas funcionalidades de um sistema, incluindo transcrição, análise e resumo de mídias (áudio, vídeo, imagens e documentos) e envio de resumos para grupos ou contatos privados.\n\n🔍 PONTOS IMPORTANTES:\n• Possibilidade de ativar ou desativar grupos e funcionalidades específicas (transcrição de áudio, análise de imagens/documentos, resumo de vídeos do YouTube).  \n• Opção de escolher entre transcrição de áudio simples ou detalhada.  \n• Permite configurar se o resumo da conversa será enviado ao grupo ou a um número privado.\n\n💡 INSIGHTS/OBSERVAÇÕES:  \nA flexibilidade dessas opções de configuração é útil para adaptar o sistema a diferentes necessidades, garantindo controle sobre privacidade, automação e detalhamento do processamento de informação, além de facilitar a gestão de resumos em diferentes canais.\n\nTIPO DE CONTEÚDO IDENTIFICADO: undefined\n",
+                "type": "text",
+                "timestamp": "2025-07-26T14:14:07+00:00",
+                "response_to": null,
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 388,
+                "message_id": "F81BE5216FF82CE63C5866E25897736B",
+                "message": "Estou entrando em uma localidade que talvez não funcione o celular.",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:15:53+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 389,
+                "message_id": "3EB0B59E0C7C67BCD5D37A",
+                "message": "\"*Transcrição de audio:*\n______\n*Fabio Pinheiro*\n\nEstou entrando em uma localidade que talvez não funcione o celular.\n____\n_*Criado por agente de IA e pode conter erros._\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:16:06+00:00",
+                "response_to": "null",
+                "member_name": "PinAI Zap",
+                "member_phone": "5511915487811"
+              },
+              {
+                "id": 390,
+                "message_id": "3EB08300206CC49F16F7FB",
+                "message": "\"tem o pdf analyser que é o que ativa/desativa o mistral pra analisar imagens e pdf\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:16:20+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 391,
+                "message_id": "3C164981DDD358984655F25007CBDD89",
+                "message": "Como eu não recebi nenhum resumo ainda&#44; daria para mandar&#44; sei lá&#44; forçar um resumo de algum grupo só para ver como ficaria a estrutura do resumo? E aí uma dúvida é se a gente pode programar&#44; tipo&#44; dar instruções para ele como deveria ser o resumo. É possível ou não?",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:16:27+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 393,
+                "message_id": "3EB021E41CB39DFB14CD86",
+                "message": "\"instruções de como seria o resumo da pra colocar mas é bem complexo\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:17:36+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 394,
+                "message_id": "05CC6C785EF7316AD3FB290F80FD7C05",
+                "message": "Não&#44; beleza&#44; se não dá pra separar&#44; deixa quieto. Se desse pra&#44; pelo menos&#44; separar da imagem&#44; já ajudaria. Porque&#44; às vezes&#44; a pessoa manda uma foto do liquidinho de alguém&#44; alguma coisa assim&#44; aí ele acaba... manda uma foto qualquer&#44; meu receio é esse&#44; entendeu?",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:17:37+00:00",
+                "response_to": "pra eu separar eu tenho que mexer em umas 15 tools e testar tudo de novo e criar um filtro no de documento tambem pra separar só o que é pdf dos outros documentos",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 395,
+                "message_id": "3EB077F247FF1FA901FB78",
+                "message": "\"tem que parar uns dias ali pra fazer\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:17:44+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 397,
+                "message_id": "3EB073F8348EE5492B7D0D",
+                "message": "Essa parte da imagem&#44; ele está meio caminho feito&#44; porque eu fiz a parte de análise de imagem separada do PDF&#44; dos documentos Então ele está meio que pré-pronto&#44; só que para poder ativar a imagem ou ativar só o documento Aí tem que sentar ali e fazer uma filtragem melhor&#44; só que isso leva mais tempo",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:19:30+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 399,
+                "message_id": "3EB0FBCC8F6B7061EACDA7",
+                "message": "Normalmente nos sistemas&#44; a gente coloca a imagem PDF junto&#44; porque é tudo no Mistral. Geralmente o pessoal não pede para dividir. Ali eu deixei separado&#44; porque ele já vem separado da API. Mas para poder colocar a função também de desativar&#44; separado&#44; tem que sentar um tempo ali e fazer. Mas se você quiser&#44; a gente combina aí e dá para fazer também.",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:20:03+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 401,
+                "message_id": "3EB0809696794645F4AD46",
+                "message": "Nessa imagem&#44; aquele agente que eu te mostrei no fim do vídeo lá que eu te mandei&#44; tá? Aí você pode fazer simplesmente isso. E ali no fim tem dois nós de envio de grupos. Então você pode configurar o envio desse resumo pro grupo. E no começo ali tem um Schedule Trigger&#44; né? Que você consegue configurar um horário. Então&#44; eu imagino que pra você seja mais interessante fazer isso aí. E depois você volta&#44; altera o prompt&#44; vem algum dia e altera. Você tem autonomia pra fazer isso&#44; coloca mais um grupo&#44; muda o horário. É simples fazer isso. Agora&#44; pra colocar dentro do sistema&#44; a gente precisa alterar tudo. Não só fazer o fluxo&#44; que vai ser a parte mais simples. Só que eu vou ter que criar as tools pra você conseguir alterar. Eu vou ter que alterar todas as queries das tools que buscam grupos pra poder trazer. Tanto buscar lá como que tá o status das ferramentas&#44; se tá ativo&#44; se tá inativo. Então eu vou ter que fazer isso pra todas as ferramentas ali do MCP pra você conseguir gerenciar. E&#44; cara&#44; nos últimos dois&#44; três dias&#44; conforme eu fui mudando&#44; eu tive que refazer&#44; refazer&#44; voltar&#44; testar&#44; testar. E eu&#44; praticamente&#44; fiquei só fazendo a mesma coisa. Então&#44; se a gente for&#44; por exemplo&#44; colocar uma funcionalidade que você... Cara&#44; isso aqui precisa pro sistema e eu quero que seja ali. Aí a gente combina e coloca ele ali dentro. Se for uma coisa mais simples&#44; de repente você consegue fazer e não precisa gastar tempo&#44; gastar dinheiro pra colocar ali dentro do sistema. E se for validado&#44; por exemplo&#44; cara&#44; isso aqui o pessoal gostou e eu quero ativar pra todos os grupos. Aí a gente combina e coloca lá dentro do sistema. Que aí o sistema vai começando a ficar com as coisas que são validadas. Com o prompt que já tá validado&#44; por exemplo&#44; com o sistema&#44; uma funcionalidade que já tá validada. E você vai construindo o seu serviço&#44; você pode até vender ele depois. De uma forma que não fica cheio de coisa e coisas que não precisam. Que te custaram e que não vão ter um retorno financeiro&#44; mas&#44; por exemplo&#44; dinheiro. Uau&#44; isso realmente tá legal&#44; sabe?",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:27:45+00:00",
+                "response_to": "null",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              },
+              {
+                "id": 403,
+                "message_id": "84DA27428610A7B1D83F8A18C4649932",
+                "message": "Não&#44; tranquilo&#44; tranquilo&#44; gosto da ideia. Vamos deixar fora&#44; aí eu crio por fora e depois habilito&#44; não? Não&#44; beleza. Beleza. É... ok. Fechado meu legal.",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:39:09+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 405,
+                "message_id": "3EB09632D93F2952CE81F1",
+                "message": "\"*Transcrição de audio:*\n______\n*Fabio Pinheiro*\n\nNão",
+                "type": "text",
+                "timestamp": "2025-07-26T14:39:24+00:00",
+                "response_to": "aí eu crio por fora e depois abrito. Não",
+                "member_name": "PinAI Zap",
+                "member_phone": "5511915487811"
+              },
+              {
+                "id": 406,
+                "message_id": "CE6FCB5A6A724851534D6E7143379F3B",
+                "message": "Só pra entender&#44; essa parte que você fala que é colocar dentro do sistema de telas&#44; seria por causa do MC? Seria por causa disso? Só pra entender mesmo.",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:47:22+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 407,
+                "message_id": "82FF7CAA7AB5BEFB1EEF97D91FE2E892",
+                "message": "é muito engraçado vendo as transcrições cara&#44; as diferenças são sutis mas são interessantes de ver",
+                "type": "audio",
+                "timestamp": "2025-07-26T14:48:22+00:00",
+                "response_to": "null",
+                "member_name": "Fabio Pinheiro",
+                "member_phone": "5511979714123"
+              },
+              {
+                "id": 408,
+                "message_id": "3EB04D8D889FBC6F00635F",
+                "message": "\"isso, as tabelas e o mcp que controla as tabelas e passa as infos para o agent\"",
+                "type": "text",
+                "timestamp": "2025-07-26T14:49:27+00:00",
+                "response_to": "essa parte que você fala que é colocar dentro do sistema de telas",
+                "member_name": "Luiz | Sincron IA",
+                "member_phone": "5519994317797"
+              }
+            ],
+            "message_ids": [
+              341,
+              343,
+              345,
+              347,
+              349,
+              348,
+              353,
+              355,
+              362,
+              365,
+              366,
+              368,
+              370,
+              373,
+              375,
+              376,
+              378,
+              379,
+              380,
+              382,
+              384,
+              383,
+              385,
+              386,
+              388,
+              389,
+              390,
+              391,
+              393,
+              394,
+              395,
+              397,
+              399,
+              401,
+              403,
+              405,
+              406,
+              407,
+              408
+            ]
+          }
+        }
+      }
+    ],
+    "Message a model": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "Na conversa, os membros discutiram principalmente questões técnicas relacionadas ao desenvolvimento e aprimoramento de um agente de inteligência artificial para resumos e análises de conteúdos diversos, como PDFs, áudios, imagens e vídeos do YouTube.\n\nPrimeiramente, Luiz explicou que o Tally é um formulário estático, não adequado para as funcionalidades desejadas. Fabio compartilhou diversos documentos em PDF relacionados a AI, machine learning e modelos de inflação, bem como o relatório \"Future of Jobs Report 2025\". Ele também enviou áudios com sugestões e dúvidas sobre melhorias no sistema do agente, destacando a necessidade de facilitar a identificação das funcionalidades por números para simplificar o uso.\n\nLuiz detalhou que o sistema permite ativar ou desativar grupos e funcionalidades específicas, incluindo transcrição e resumo de áudios, imagens, documentos e vídeos do YouTube, além de configurar o envio dos resumos para grupos ou contatos privados. Ele ressaltou que há uma separação já feita entre análise de imagens e documentos, porém para ativar ou desativar essas funções separadamente ainda é necessário um trabalho de filtragem e ajustes mais profundos no sistema, o que demandaria tempo.\n\nFabio sugeriu descontinuar um agente antigo e criar um novo com integração das ferramentas de Luiz para enviar pílulas diárias ou resumos programados em horários definidos, mencionando a importância de monitorar custos e qualidade do serviço. Luiz explicou que para integrar essas funcionalidades ao sistema principal (MCP) será necessário alterar diversas tabelas e ferramentas, o que é um esforço considerável, e indicou que funcionalidades simples podem ser feitas fora do sistema e, caso validadas, integradas posteriormente para evitar gastos desnecessários.\n\nHouve também discussões sobre a complexidade de configurar instruções específicas para os resumos, separação do conteúdo de imagens para evitar envio indevido e uso de prompt para reforçar a memória do agente sobre suas funções. Fabio demonstrou interesse em testar essas funcionalidades e em planejar o lançamento do agente em um grupo de uma instituição de ensino, para avaliar o desempenho.\n\nNo geral, a conversa girou em torno das seguintes ações e insights:  \n- Necessidade de facilitar a interação com o agente via numeração das opções.  \n- Possibilidade de ativar/desativar funcionalidades específicas para ajuste fino do sistema.  \n- Importância de controlar custos e qualidade do processamento (tokens e modelo usado).  \n- Estratégia de implementar funcionalidades simples fora do sistema principal e integrar as validadas posteriormente.  \n- Configuração de envio programado de resumos para grupos e contatos privados, com autonomia para ajustes de horários e grupos pelo usuário.  \n- Reconhecimento de que separar análise de imagens e documentos é útil, porém requer desenvolvimento adicional.\n\nNão foram compartilhados links externos relevantes na conversa, apenas documentos PDF enviados diretamente. Foram enviados vários áudios, principalmente por Fabio e Luiz, com explicações e sugestões técnicas importantes para o desenvolvimento do agente.\n\nEm resumo, o grupo está trabalhando na melhoria e configuração de um agente de IA para análise e resumo de conteúdos multimídia, focando em flexibilidade, custo-benefício e usabilidade, com planos para testar e lançar versões controladas em ambientes de uso real.",
+            "refusal": null,
+            "annotations": []
+          },
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "Message a model1": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "Na conversa, os membros discutiram principalmente questões técnicas relacionadas ao desenvolvimento e aprimoramento de um agente de inteligência artificial para resumos e análises de conteúdos diversos, como PDFs, áudios, imagens e vídeos do YouTube.\n\n📋 Formulário Tally e documentos compartilhados (08:15): Luiz explicou que o Tally é um formulário estático e não atende às necessidades do projeto. Fabio compartilhou vários PDFs sobre inteligência artificial, machine learning e relatórios econômicos, além do \"Future of Jobs Report 2025\". Ele também enviou áudios com sugestões para melhorar o agente, destacando a importância de facilitar a navegação via numeração das opções.\n\n⚙️ Configuração de funcionalidades do agente (09:30): Luiz detalhou que o sistema permite ativar ou desativar grupos e funcionalidades específicas, como transcrição e resumo de áudios, imagens, documentos e vídeos do YouTube. Ele ressaltou que separar análises de imagens e documentos já foi planejado, mas ativar ou desativar essas funções individualmente ainda exige trabalho técnico e tempo. A dica é priorizar ajustes simples para agilizar as melhorias.\n\n🆕 Proposta de novo agente e integração (10:45): Fabio sugeriu descontinuar um agente antigo e criar um novo, incorporando as ferramentas de Luiz para enviar pílulas diárias ou resumos agendados. Ele ressaltou a necessidade de monitorar custos e qualidade do serviço para garantir eficiência. Luiz explicou que integrar tudo ao sistema principal (MCP) demanda alterações complexas, indicando que funcionalidades simples podem ser feitas fora do sistema inicialmente, para validação antes da integração.\n\n🧩 Complexidade na configuração e uso de prompts (12:00): O grupo discutiu a dificuldade de configurar instruções específicas para os resumos e a necessidade de separar conteúdos de imagens para evitar envios errados. Além disso, mencionaram o uso de prompts para reforçar a memória do agente sobre suas funções. Fabio mostrou interesse em testar essas funcionalidades para aprimorar o desempenho.\n\n🚀 Planejamento para testes em ambiente real (13:15): Fabio demonstrou interesse em lançar o agente em um grupo de uma instituição de ensino para avaliar seu desempenho prático. A estratégia inclui envio programado de resumos para grupos e contatos privados, com autonomia para o usuário ajustar horários e destinatários. A dica é iniciar testes controlados para validar as funcionalidades antes do lançamento amplo.\n\nNo geral, os membros focam em facilitar interação com o agente, ajustar funcionalidades finamente, controlar custos e implementar melhorias de forma incremental e validada.\n\nLinks importantes:  \n- Documentos PDF e áudios compartilhados foram enviados diretamente no grupo, sem links externos disponíveis.",
+            "refusal": null,
+            "annotations": []
+          },
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "PostgreSQL - Salvar Resumo1": [
+      {
+        "json": {
+          "json_agg": [
+            {
+              "status": "created",
+              "id": 49,
+              "group_id": 17,
+              "summary_date": "2025-08-09",
+              "total_messages": 39,
+              "send_status": "pending",
+              "created_at_brasilia": "2025-08-09T07:16:33.05702"
+            }
+          ]
+        }
+      }
+    ],
+    "Code - Log Resultado2": [
+      {
+        "json": {
+          "summary_id": 49,
+          "send_status": "sent",
+          "send_attempts": 1,
+          "destination_used": "120363403027713163",
+          "sent_at": "2025-08-09T14:17:33.994Z",
+          "group_name": "M7 Testes | PricingCast",
+          "success": true
+        }
+      }
+    ],
+    "Cron - A cada 10 minutos - Enviar msg2": [
+      {
+        "json": {}
+      }
+    ]
+  },
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 3,
+  "updatedAt": "2025-08-26T00:46:46.741Z",
+  "versionId": "59269388-793d-40ab-b209-250a7d215063"
+}
