@@ -1,0 +1,875 @@
+{
+  "active": false,
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Salva dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Padroniza Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva dados": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Padroniza Dados": {
+      "main": [
+        [
+          {
+            "node": "Consulta no Google",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta no Google": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados usuários": {
+      "main": [
+        [
+          {
+            "node": "Mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagens": {
+      "main": [
+        [
+          {
+            "node": "Define Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia mensagem": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Padroniza Dados1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Padroniza Dados1": {
+      "main": [
+        [
+          {
+            "node": "Puxa leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Dados usuários",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Puxa leads": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-30T03:27:46.259Z",
+  "id": "yju3GXsmmQ30sRMe",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.leads",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        176
+      ],
+      "id": "9d2478fe-ae93-4fa2-8f47-c76e16d5b080",
+      "name": "Split Out",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2000,
+        176
+      ],
+      "id": "f7070014-9883-4372-b32c-0cc4ae2b06e8",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "formTitle": "Busca",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "titulo",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "site",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "instagram.com"
+                  },
+                  {
+                    "option": "linkedin.com"
+                  },
+                  {
+                    "option": "facebook.com"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "quantidade",
+              "fieldType": "number",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        816,
+        176
+      ],
+      "id": "97e310c0-67b8-4eda-ae15-c917c8112e40",
+      "name": "On form submission",
+      "webhookId": "400763f1-d78a-4814-a291-99580ebe49ca",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2464,
+        288
+      ],
+      "id": "2d973992-f606-4386-b956-e8ad338e8df6",
+      "name": "Wait",
+      "webhookId": "2791a6a6-28e3-432c-a58b-4db71cceb85d"
+    },
+    {
+      "parameters": {
+        "content": "## Cria lista de leads",
+        "height": 620,
+        "width": 2060,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        672,
+        -16
+      ],
+      "typeVersion": 1,
+      "id": "abdea46a-96b0-4d02-988f-2ef5ba5e5032",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "tableId": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $json['output.leads'].nome }}"
+            },
+            {
+              "fieldId": "inta",
+              "fieldValue": "={{ $json[\"output.leads\"].link_instagram }}"
+            },
+            {
+              "fieldId": "Linkdin",
+              "fieldValue": "={{ $json[\"output.leads\"].link_linkedin }}"
+            },
+            {
+              "fieldId": "Site",
+              "fieldValue": "={{ $json[\"output.leads\"].link_site }}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $json[\"output.leads\"].whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        288
+      ],
+      "id": "fdc66f66-e66e-4b7d-8c9a-03398555cf80",
+      "name": "Salva dados",
+      "credentials": {
+        "supabaseApi": {
+          "id": "6SVrwqEuLHDsNj03",
+          "name": "Supabase account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.organic }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Você deve estruturar os dados dos leads encontrados, porém o nome e o whatsapp são obrigatórios, ignore os locais que não possuirem esses dois campos.\n\nO whatsapp sempre deve ser salvo com código do país (brasil), DDD e o número, sem mascara e sem outros caracteres além de números.\n\nO número de whatsapp deve ser encontrado no campo de descrição/snippet.\n\n\n## NUNCA INVENTE INFORMAÇÕES, CASO NÃO TENHA ALGUMA INFORMAÇÃO APENAS IGNORE E DESCONSIDERE.\n\nExemplo de entrada de dados:\ntitle: nome do estabelecimento/lead\nlink_instagram: link do instagram do lead\nlink_site: link do site do lead\nlink_linkedin: link do linkedin do lead\nsnippet: descrição que pode contar algum número telefonico para contato ou links."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1472,
+        176
+      ],
+      "id": "8cee2297-dbbc-49dd-948d-e8ddac2f502c",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1456,
+        384
+      ],
+      "id": "22d4f895-3a68-4862-8085-421c1b1ed506",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "FjG7J30aupdcfjED",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"leads\": [\n      {\n        \"nome\": \"titulo do local\",\n        \"whatsapp\" : \"5519912345678\",\n        \"link_instagram\": \"instagram.com/instagram_lead\",\n        \"link_site\": \"www.site_lead.com\",\n        \"link_linkedin\": \"linkedin.com/in/linkedin_lead\"\n      }\n    ],\n  \"required\": [\"nome\", \"whatsapp\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1664,
+        368
+      ],
+      "id": "ff1761cd-e95b-45cf-82d2-33f129c34716",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7ab0a3d8-bd12-4b61-aaa7-272c390c4ee5",
+              "name": "titulo",
+              "value": "={{ $json.titulo }}",
+              "type": "string"
+            },
+            {
+              "id": "ae7b0582-4c66-4d31-8231-5ad22b66baab",
+              "name": "site",
+              "value": "={{ $json.site }}",
+              "type": "string"
+            },
+            {
+              "id": "c6894c28-ce71-486e-a1fb-33055108ecd0",
+              "name": "quantidade",
+              "value": "={{ $json.quantidade }}",
+              "type": "string"
+            },
+            {
+              "id": "58338d13-54b9-49c4-9b7a-1c7febcf525f",
+              "name": "serper.apiKey",
+              "value": "354f2156efe0b4b4083e99e1b11bed8294c6bb6e",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        176
+      ],
+      "id": "ca956596-8493-4159-93b7-d6b6046950f4",
+      "name": "Padroniza Dados"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://google.serper.dev/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "={{ $('Padroniza Dados').item.json.serper.apiKey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $('Padroniza Dados').item.json.titulo }}:{{ $('Padroniza Dados').item.json.site }}"
+            },
+            {
+              "name": "gl",
+              "value": "br"
+            },
+            {
+              "name": "hl",
+              "value": "pt-br"
+            },
+            {
+              "name": "num",
+              "value": "={{ $('Padroniza Dados').item.json.quantidade }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        176
+      ],
+      "id": "48798f9d-d670-496f-b3d9-ce692b3ae060",
+      "name": "Consulta no Google"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Padroniza Dados1').item.json.uazapi.url }}/send/text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "convert",
+              "value": "true"
+            },
+            {
+              "name": "token",
+              "value": "={{ $('Padroniza Dados1').item.json.uazapi.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Dados usuários').item.json.whatsapp }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Define Mensagem').item.json.mensagem }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ false }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2272,
+        944
+      ],
+      "id": "996cdf04-eebb-437c-aba4-ea1d770699f4",
+      "name": "Envia mensagem",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a8a6b840-bcd8-413f-b829-05d56e1e220b",
+              "name": "uazapi.token",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "3ae82e4e-a371-4cc8-ad5b-e1097c11a1ee",
+              "name": "uazapi.url",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        816
+      ],
+      "id": "362aada9-eb05-487c-9a58-7564c640155a",
+      "name": "Padroniza Dados1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "acce1314-4c17-49e2-a1b6-6085bbc6014c",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "d56e5b28-7d8d-46d1-bf34-f8d4904b4007",
+              "name": "whatsapp",
+              "value": "={{ $json.whatsapp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1664,
+        944
+      ],
+      "id": "bf96a94a-eefc-45a6-a3b6-31f591254ca2",
+      "name": "Dados usuários"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ed6d54b-6b1a-44d7-8610-8015a97b4c40",
+              "name": "mensagem",
+              "value": "={{ $json[$('Mensagens').item.json.random] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2064,
+        944
+      ],
+      "id": "dffb8897-14b5-4f77-9beb-1575ab424cde",
+      "name": "Define Mensagem"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0fe73d2-130b-49ce-89cf-175b7af27d02",
+              "name": "1",
+              "value": "=Oi, tudo bem?\nVi o perfil da {{ $('Dados usuários').item.json.nome }} e resolvi te mandar uma mensagem rápida. Tenho ajudado alguns negócios com automações inteligentes (coisas que economizam tempo de verdade). Queria saber se faz sentido a gente conversar 👀",
+              "type": "string"
+            },
+            {
+              "id": "1542f5ca-608e-4348-937f-8a1c991b7f69",
+              "name": "2",
+              "value": "=Olá, tudo certo?\nEstava olhando a {{ $('Dados usuários').item.json.nome }} e pensei em te chamar! Trabalho com automações usando IA — soluções simples que podem facilitar bastante a rotina de negócios. Posso te contar mais se fizer sentido pra vocês :)",
+              "type": "string"
+            },
+            {
+              "id": "b2009e4a-1543-4455-b29c-639e60d300b2",
+              "name": "3",
+              "value": "=E aí, como vai?\nPassei aqui rapidinho porque vi a {{ $('Dados usuários').item.json.nome }} e imaginei que talvez vocês pudessem se beneficiar de algumas automações com inteligência artificial. Nada complicado — tudo prático e feito sob medida. Curte esse tipo de coisa?",
+              "type": "string"
+            },
+            {
+              "id": "0ec117e1-c348-4bbf-bb3c-fdcf5adbabfe",
+              "name": "4",
+              "value": "=Oi, tudo joia?\nConheci a {{ $('Dados usuários').item.json.nome }} pelo Instagram e fiquei com vontade de entender melhor o que vocês fazem. Tenho trabalhado com automações e agentes de IA que ajudam empresas a economizar tempo e melhorar processos. Bora trocar uma ideia?",
+              "type": "string"
+            },
+            {
+              "id": "8ae29fe6-15e9-483a-99d0-d32167c7c0c5",
+              "name": "random",
+              "value": "={{ Math.floor(Math.random() * (4 - 1 + 1)) + 1 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1856,
+        944
+      ],
+      "id": "10ab496a-38ab-439f-9619-186256e80889",
+      "name": "Mensagens"
+    },
+    {
+      "parameters": {
+        "content": "## Envia primeira mensagem ao Lead",
+        "height": 680,
+        "width": 2420,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        672,
+        656
+      ],
+      "typeVersion": 1,
+      "id": "e3c43e79-b68b-483d-a806-6e986d0556c3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (120 - 20 + 1)) + 20 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        944
+      ],
+      "id": "f985d56c-b9df-43b4-8b26-31d36ef4d219",
+      "name": "Wait1",
+      "webhookId": "6bbbf983-3273-4156-96cb-026457de566f"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 11
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        736,
+        816
+      ],
+      "id": "2f9679d9-6d93-4369-a27c-db3b4fd5b7ca",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('Dados usuários').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "contato_realizado",
+              "fieldValue": "TRUE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        944
+      ],
+      "id": "01dacf1b-4505-4196-b19b-1c1a3299db9e",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "6SVrwqEuLHDsNj03",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1440,
+        816
+      ],
+      "id": "61e15961-2c3b-44df-970f-91b0c1b2bb6d",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "limit": 5,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "contato_realizado",
+              "condition": "is",
+              "keyValue": "FALSE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        816
+      ],
+      "id": "a8607251-b7c6-48a7-8029-ff175825808c",
+      "name": "Puxa leads",
+      "credentials": {
+        "supabaseApi": {
+          "id": "6SVrwqEuLHDsNj03",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5c8fe7d3-72f1-4c4a-87e5-7f4762a4377d",
+      "name": "Azure OpenAI Chat Model"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-30T03:27:39.778Z",
+      "updatedAt": "2025-08-30T03:27:39.778Z",
+      "id": "0OJnmFJ33pogP12u",
+      "name": "Leads"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-01T12:39:15.437Z",
+  "versionId": "512a0e93-6c23-4dd9-881a-04ba67fe92d9"
+}
