@@ -1,0 +1,898 @@
+{
+  "active": false,
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Salva dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Padroniza Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salva dados": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Puxa leads": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Dados usuários",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Padroniza Dados1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagens": {
+      "main": [
+        [
+          {
+            "node": "Define Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados usuários": {
+      "main": [
+        [
+          {
+            "node": "Mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Padroniza Dados": {
+      "main": [
+        [
+          {
+            "node": "Consulta no Google",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Padroniza Dados1": {
+      "main": [
+        [
+          {
+            "node": "Puxa leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia mensagem": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta no Google": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-01T13:04:41.712Z",
+  "id": "PKN6dGE4fhfHDv2d",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 7",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.leads",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        192
+      ],
+      "id": "03b61f98-3d46-4c8c-b388-f4a326a7d137",
+      "name": "Split Out",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1328,
+        192
+      ],
+      "id": "26308783-4f35-4304-977f-97349bbd666e",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "formTitle": "Busca",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "titulo",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "site",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "instagram.com"
+                  },
+                  {
+                    "option": "linkedin.com"
+                  },
+                  {
+                    "option": "facebook.com"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "quantidade",
+              "fieldType": "number",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        144,
+        192
+      ],
+      "id": "ee2efec8-654b-4f92-90b3-cb655a0cf2e9",
+      "name": "On form submission",
+      "webhookId": "400763f1-d78a-4814-a291-99580ebe49ca"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1792,
+        304
+      ],
+      "id": "13fc6f9a-2570-4b6e-8afa-f1dc983c3ab0",
+      "name": "Wait",
+      "webhookId": "2791a6a6-28e3-432c-a58b-4db71cceb85d"
+    },
+    {
+      "parameters": {
+        "content": "## Cria lista de leads",
+        "height": 620,
+        "width": 2060,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "2b357eed-1c5a-418f-8ea8-2de6e7cbd11f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "limit": 5,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "contato_realizado",
+              "condition": "is",
+              "keyValue": "FALSE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        528,
+        832
+      ],
+      "id": "aa62ef5b-fb14-413f-b7b6-88a00d17eb7c",
+      "name": "Puxa leads"
+    },
+    {
+      "parameters": {
+        "tableId": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $json['output.leads'].nome }}"
+            },
+            {
+              "fieldId": "link_instagram",
+              "fieldValue": "={{ $json[\"output.leads\"].link_instagram }}"
+            },
+            {
+              "fieldId": "link_linkedin",
+              "fieldValue": "={{ $json[\"output.leads\"].link_linkedin }}"
+            },
+            {
+              "fieldId": "link_site",
+              "fieldValue": "={{ $json[\"output.leads\"].link_site }}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $json[\"output.leads\"].whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1568,
+        304
+      ],
+      "id": "f426e652-235a-4cf2-ae18-4c2933120661",
+      "name": "Salva dados",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        768,
+        832
+      ],
+      "id": "cc0a0c96-20b8-4d4a-b8e4-a0625f30d25c",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('Dados usuários').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "contato_realizado",
+              "fieldValue": "TRUE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1808,
+        960
+      ],
+      "id": "7a8bcf4f-9ae9-42ec-abeb-14d1853ad0e6",
+      "name": "Supabase"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 11
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        832
+      ],
+      "id": "405f6f34-15e2-4207-a588-cdc9a9436f0a",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.organic }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Você deve estruturar os dados dos leads encontrados, porém o nome e o whatsapp são obrigatórios, ignore os locais que não possuirem esses dois campos.\n\nO whatsapp sempre deve ser salvo com código do país (brasil), DDD e o número, sem mascara e sem outros caracteres além de números.\n\nO número de whatsapp deve ser encontrado no campo de descrição/snippet.\n\n\n## NUNCA INVENTE INFORMAÇÕES, CASO NÃO TENHA ALGUMA INFORMAÇÃO APENAS IGNORE E DESCONSIDERE.\n\nExemplo de entrada de dados:\ntitle: nome do estabelecimento/lead\nlink_instagram: link do instagram do lead\nlink_site: link do site do lead\nlink_linkedin: link do linkedin do lead\nsnippet: descrição que pode contar algum número telefonico para contato ou links."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        800,
+        192
+      ],
+      "id": "1ef23566-c32c-4974-ab79-32b5fd564d5a",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        784,
+        400
+      ],
+      "id": "e60dd8db-2dc4-4083-98ec-2288b13d917b",
+      "name": "OpenAI Chat Model3"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"leads\": [\n      {\n        \"nome\": \"titulo do local\",\n        \"whatsapp\" : \"5519912345678\",\n        \"link_instagram\": \"instagram.com/instagram_lead\",\n        \"link_site\": \"www.site_lead.com\",\n        \"link_linkedin\": \"linkedin.com/in/linkedin_lead\"\n      }\n    ],\n  \"required\": [\"nome\", \"whatsapp\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        992,
+        384
+      ],
+      "id": "20688b73-5f27-4bb0-8e2d-e93e5681941f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (120 - 20 + 1)) + 20 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2048,
+        960
+      ],
+      "id": "7b62815a-06e4-4e5c-b2b1-5626a1a3cf52",
+      "name": "Wait1",
+      "webhookId": "6bbbf983-3273-4156-96cb-026457de566f"
+    },
+    {
+      "parameters": {
+        "content": "## Envia primeira mensagem ao Lead",
+        "height": 680,
+        "width": 2420,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        672
+      ],
+      "typeVersion": 1,
+      "id": "88266402-3a09-471a-bc31-ab2576ebe595",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0fe73d2-130b-49ce-89cf-175b7af27d02",
+              "name": "1",
+              "value": "=Oi, tudo bem?\nVi o perfil da {{ $('Dados usuários').item.json.nome }} e resolvi te mandar uma mensagem rápida. Tenho ajudado alguns negócios com automações inteligentes (coisas que economizam tempo de verdade). Queria saber se faz sentido a gente conversar 👀",
+              "type": "string"
+            },
+            {
+              "id": "1542f5ca-608e-4348-937f-8a1c991b7f69",
+              "name": "2",
+              "value": "=Olá, tudo certo?\nEstava olhando a {{ $('Dados usuários').item.json.nome }} e pensei em te chamar! Trabalho com automações usando IA — soluções simples que podem facilitar bastante a rotina de negócios. Posso te contar mais se fizer sentido pra vocês :)",
+              "type": "string"
+            },
+            {
+              "id": "b2009e4a-1543-4455-b29c-639e60d300b2",
+              "name": "3",
+              "value": "=E aí, como vai?\nPassei aqui rapidinho porque vi a {{ $('Dados usuários').item.json.nome }} e imaginei que talvez vocês pudessem se beneficiar de algumas automações com inteligência artificial. Nada complicado — tudo prático e feito sob medida. Curte esse tipo de coisa?",
+              "type": "string"
+            },
+            {
+              "id": "0ec117e1-c348-4bbf-bb3c-fdcf5adbabfe",
+              "name": "4",
+              "value": "=Oi, tudo joia?\nConheci a {{ $('Dados usuários').item.json.nome }} pelo Instagram e fiquei com vontade de entender melhor o que vocês fazem. Tenho trabalhado com automações e agentes de IA que ajudam empresas a economizar tempo e melhorar processos. Bora trocar uma ideia?",
+              "type": "string"
+            },
+            {
+              "id": "8ae29fe6-15e9-483a-99d0-d32167c7c0c5",
+              "name": "random",
+              "value": "={{ Math.floor(Math.random() * (4 - 1 + 1)) + 1 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        960
+      ],
+      "id": "1fc458a2-d326-4b0a-8331-b5e5104aeccf",
+      "name": "Mensagens"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ed6d54b-6b1a-44d7-8610-8015a97b4c40",
+              "name": "mensagem",
+              "value": "={{ $json[$('Mensagens').item.json.random] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1392,
+        960
+      ],
+      "id": "7ef28621-3c3d-4a33-8410-9cbb419d2d2e",
+      "name": "Define Mensagem"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "acce1314-4c17-49e2-a1b6-6085bbc6014c",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "d56e5b28-7d8d-46d1-bf34-f8d4904b4007",
+              "name": "whatsapp",
+              "value": "={{ $json.whatsapp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        992,
+        960
+      ],
+      "id": "f0c22bde-1616-4102-91d8-e369748c315a",
+      "name": "Dados usuários"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7ab0a3d8-bd12-4b61-aaa7-272c390c4ee5",
+              "name": "titulo",
+              "value": "={{ $json.titulo }}",
+              "type": "string"
+            },
+            {
+              "id": "ae7b0582-4c66-4d31-8231-5ad22b66baab",
+              "name": "site",
+              "value": "={{ $json.site }}",
+              "type": "string"
+            },
+            {
+              "id": "c6894c28-ce71-486e-a1fb-33055108ecd0",
+              "name": "quantidade",
+              "value": "={{ $json.quantidade }}",
+              "type": "string"
+            },
+            {
+              "id": "58338d13-54b9-49c4-9b7a-1c7febcf525f",
+              "name": "serper.apiKey",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        192
+      ],
+      "id": "781d4bdd-b2d1-4cf4-9b81-b376bdea8ac8",
+      "name": "Padroniza Dados"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a8a6b840-bcd8-413f-b829-05d56e1e220b",
+              "name": "uazapi.token",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "3ae82e4e-a371-4cc8-ad5b-e1097c11a1ee",
+              "name": "uazapi.url",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        288,
+        832
+      ],
+      "id": "7f67a2c0-9eb2-45cd-92bc-ab0dfb57849b",
+      "name": "Padroniza Dados1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Padroniza Dados1').item.json.uazapi.url }}/send/text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "convert",
+              "value": "true"
+            },
+            {
+              "name": "token",
+              "value": "={{ $('Padroniza Dados1').item.json.uazapi.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Dados usuários').item.json.whatsapp }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Define Mensagem').item.json.mensagem }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ false }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1600,
+        960
+      ],
+      "id": "8de945f2-d11d-4d07-93a4-f0556b20c701",
+      "name": "Envia mensagem",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://google.serper.dev/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "={{ $('Padroniza Dados').item.json.serper.apiKey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $('Padroniza Dados').item.json.titulo }}:{{ $('Padroniza Dados').item.json.site }}"
+            },
+            {
+              "name": "gl",
+              "value": "br"
+            },
+            {
+              "name": "hl",
+              "value": "pt-br"
+            },
+            {
+              "name": "num",
+              "value": "={{ $('Padroniza Dados').item.json.quantidade }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        608,
+        192
+      ],
+      "id": "b19e983f-10a6-4e13-a3e3-d40fe4620bf4",
+      "name": "Consulta no Google"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {
+    "Puxa leads": [
+      {
+        "json": {
+          "id": 45,
+          "nome": "Barbearia Industrial",
+          "whatsapp": "19981476177",
+          "link_instagram": "https://www.barbeariaindustrial.com.br/",
+          "contato_realizado": false,
+          "data_insercao": "2025-04-14T16:09:04.85762+00:00",
+          "link_linkedin": null,
+          "link_site": null
+        }
+      },
+      {
+        "json": {
+          "id": 44,
+          "nome": "Barbearia Industrial",
+          "whatsapp": "19981476177",
+          "link_instagram": "https://www.barbeariaindustrial.com.br/",
+          "contato_realizado": false,
+          "data_insercao": "2025-04-14T16:09:04.240305+00:00",
+          "link_linkedin": null,
+          "link_site": null
+        }
+      },
+      {
+        "json": {
+          "id": 43,
+          "nome": "SEXTO BARBEARIA - SP",
+          "whatsapp": "19981476177",
+          "link_instagram": "https://www.instagram.com/sextobarbearia/",
+          "contato_realizado": false,
+          "data_insercao": "2025-04-14T16:09:03.615424+00:00",
+          "link_linkedin": null,
+          "link_site": null
+        }
+      },
+      {
+        "json": {
+          "id": 42,
+          "nome": "Barbearia Vera Cruz",
+          "whatsapp": "19981476177",
+          "link_instagram": "https://www.barbeariahermanos.com.br/agenda-whatsapp.php",
+          "contato_realizado": false,
+          "data_insercao": "2025-04-14T16:09:02.956419+00:00",
+          "link_linkedin": null,
+          "link_site": null
+        }
+      },
+      {
+        "json": {
+          "id": 40,
+          "nome": "Barbearia Soares",
+          "whatsapp": "19981476177",
+          "link_instagram": "https://www.threads.net/@barbeariasoarespelotas",
+          "contato_realizado": false,
+          "data_insercao": "2025-04-14T16:07:45.544183+00:00",
+          "link_linkedin": null,
+          "link_site": null
+        }
+      }
+    ]
+  },
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-30T03:27:39.778Z",
+      "updatedAt": "2025-08-30T03:27:39.778Z",
+      "id": "0OJnmFJ33pogP12u",
+      "name": "Leads"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-01T13:04:41.712Z",
+  "versionId": "e7846f48-f9c6-4531-a5cb-6b7788b03786"
+}
