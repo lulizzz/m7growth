@@ -1,0 +1,246 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Create a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastro de GRUPOS": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastro de Usuario": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-04T20:08:35.145Z",
+  "id": "gFaeSYCj2VxgT3pL",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "tableId": "active_group_registration_OFICIAL",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "group_status",
+              "fieldValue": "={{ $json['Status do Grupo'] }}"
+            },
+            {
+              "fieldId": "Nome do group",
+              "fieldValue": "={{ $json['nome do grupo '] }}"
+            },
+            {
+              "fieldId": "group_ids",
+              "fieldValue": "={{ $json['ID do  Grupo'] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        64,
+        -48
+      ],
+      "id": "e7913035-004a-4b8a-82ec-b4987a67b2de",
+      "name": "Create a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "6SVrwqEuLHDsNj03",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd27aa7d-cb80-45c1-ac93-26dfc2764efe",
+              "name": "ID do  Grupo",
+              "value": "={{ $json.body.data.fields[1].value }}",
+              "type": "string"
+            },
+            {
+              "id": "86c37a2d-c3bf-4952-bdc1-4da94fbe5389",
+              "name": "nome do grupo ",
+              "value": "={{ $json.body.data.fields[0].value }}",
+              "type": "string"
+            },
+            {
+              "id": "68ddef09-f4e0-4d0f-9a80-7ba996e8a1c0",
+              "name": "=Status do Grupo",
+              "value": "={{ $json.body.data.fields[2].value[0] === '222b1a35-c68d-4fd4-8f14-2beb1282a03a' ? 'Active' : $json.body.data.fields[2].value[0] === 'bf957118-9d60-43c5-b976-1801a66473af' ? 'Blocked' : $json.body.data.fields[2].value[0] === 'fbe6c9fd-06ec-493a-b0e6-4f97ab5ad76b' ? 'Inactive' : 'Desconhecido' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -160,
+        -48
+      ],
+      "id": "711b2063-5dc9-48a5-9e8a-49c3cff69a6d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "tableId": "active_tel_OFICIAL",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "group_status",
+              "fieldValue": "={{ $json['Status do Grupo'] }}"
+            },
+            {
+              "fieldId": "Nome do group",
+              "fieldValue": "={{ $json['nome do grupo '] }}"
+            },
+            {
+              "fieldId": "group_ids",
+              "fieldValue": "={{ $json['ID do  Grupo'] }}"
+            },
+            {
+              "fieldId": "Tipo",
+              "fieldValue": "chat"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        64,
+        192
+      ],
+      "id": "6f093f87-b9dc-415f-89c8-1f76274e516c",
+      "name": "Create a row1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "6SVrwqEuLHDsNj03",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd27aa7d-cb80-45c1-ac93-26dfc2764efe",
+              "name": "ID do  Grupo",
+              "value": "={{ $json.body.data.fields[1].value }}",
+              "type": "string"
+            },
+            {
+              "id": "86c37a2d-c3bf-4952-bdc1-4da94fbe5389",
+              "name": "nome do grupo ",
+              "value": "={{ $json.body.data.fields[0].value }}",
+              "type": "string"
+            },
+            {
+              "id": "68ddef09-f4e0-4d0f-9a80-7ba996e8a1c0",
+              "name": "=Status do Grupo",
+              "value": "={{ $json.body.data.fields[2].value[0] === '60cee71d-c3ac-4821-95b2-7ee2c9d2939d' ? 'Active' : $json.body.data.fields[2].value[0] === '2863eb3b-ed96-4557-b5ad-e3313a393518' ? 'Blocked' : $json.body.data.fields[2].value[0] === 'bb1f8172-ea23-441c-8084-3bef6f14edd4' ? 'Inactive' : 'Desconhecido' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -160,
+        192
+      ],
+      "id": "48d053fc-6ff2-4465-ab33-4c7bd801522e",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cadastro_de_grupos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -384,
+        -48
+      ],
+      "id": "a5e68e99-944c-4872-a5ef-a13722debf70",
+      "name": "Cadastro de GRUPOS",
+      "webhookId": "a92c7a0c-d4a6-4914-9261-1fd872219ed9"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cadastro_de_usuarios",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -384,
+        192
+      ],
+      "id": "9106a32e-d797-4d4b-8f0a-c5590001f50d",
+      "name": "Cadastro de Usuario",
+      "webhookId": "a92c7a0c-d4a6-4914-9261-1fd872219ed9"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-04T20:08:35.145Z",
+  "versionId": "93052bfa-c049-4845-aadb-b7dfab523d7a"
+}
