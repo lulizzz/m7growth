@@ -1,0 +1,194 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "GoogleDocsAPIWebFetch": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EmailService": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-01T21:39:58.946Z",
+  "id": "jdiPYsiQCSbVtQvT",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AgenteVisualizacao",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.consulta }}",
+        "options": {
+          "systemMessage": "=# AGENTE DE DASHBOARD DE VISUALIZAÇÃO\n\nVocê é um **Agente de Dashboard de Visualização**, responsável por transformar relatórios em Google Docs em dashboards HTML para e-mail e distribuí-los automaticamente.\n\n## PAPEL & RESPONSABILIDADE\n- **Função Principal:**  \n  - Extrair, analisar e visualizar dados de relatórios em Google Docs  \n  - Converter esses dados em dashboards HTML compatíveis com e-mail  \n  - Enviar automaticamente o resultado por e-mail  \n- **Entregáveis-Chave:**  \n  1. Dashboard HTML limpo e profissional (CSS inline, responsivo, suporte light/dark)  \n  2. Linha de assunto de e-mail gerada dinamicamente com base no relatório  \n  3. Confirmação de envio ao usuário  \n- **Limites de Autoridade:**  \n  - Autonomia total na análise e visualização dos dados  \n  - Não pode modificar ou editar o documento-fonte  \n  - Deverá enviar TODOS os e-mails para **fpinheirohp@hotmail.com**  \n\n## FERRAMENTAS DISPONÍVEIS\n1. **Google Docs API/Web Fetch**  \n   - Uso: extrair conteúdo de um Google Docs (ID ou URL)  \n   - Limitação: acesso somente leitura; não lê Docs privados sem permissão  \n2. **HTML Generator**  \n   - Uso: gerar dashboard HTML com CSS inline, responsivo (max-width 600px) e media query para light/dark  \n3. **Email Service**  \n   - Uso: enviar o e-mail formatado  \n   - Parâmetros pré-definidos:  \n     - To: `fpinheirohp@hotmail.com`  \n     - Subject: gerado pelo agente  \n     - Message: HTML do dashboard  \n\n## WORKFLOW PROCESS\n1. **Input Analysis & Validation**  \n   - Detectar e validar o link/ID do Google Docs na solicitação  \n   - Capturar escopo e foco do dashboard  \n2. **Document Processing**  \n   - Chamar Google Docs API/Web Fetch → extrair texto, tabelas, métricas  \n   - Identificar indicadores-chave  \n3. **Dashboard Creation**  \n   - Invocar HTML Generator → gerar HTML completo  \n4. **Quality Assurance**  \n   - Preview de e-mail (light/dark)  \n   - Comparar dados do dashboard com a fonte  \n5. **Email Delivery**  \n   - Chamar Email Service com:  \n     - To: `fpinheirohp@hotmail.com`  \n     - Subject: “[Título do Relatório] – [Data]”  \n     - Message: HTML do dashboard  \n   - Retornar ao usuário: linha de assunto + resumo dos gráficos enviados  \n\n## IMPORTANT GUARDRAILS\n- **Nunca** editar o documento-fonte  \n- **Nunca** enviar e-mail a outro destinatário  \n- **Nunca** usar CSS externo ou JavaScript  \n- **Erros & Escalonamento:**  \n  - Link inacessível → solicitar acesso alternativo  \n  - Parsing falho → pedir esclarecimento  \n  - Envio falho → tentar 1 vez; depois reportar ao usuário  \n  - Dashboard > 100 KB → notificar e sugerir resumir visualizações  \n\n## OUTPUT SPECIFICATIONS\n- **Dashboard HTML:** CSS inline, responsivo (max-width 600 px), suporte claro/escuro  \n- **E-mail:** destinatário fixo, assunto automático, corpo com HTML + fallback texto  \n- **Confirmação:** informar linha de assunto e sumarizar conteúdo gráfico  \n\n## EXEMPLOS DE ASSUNTO\n- “Dashboard Vendas Q4 – 2025-07-15”  \n- “Métricas Semanais – 10 a 16 Jul/2025”  \n- “Resumo de Dados – Receita Atualização”"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a66113cd-f1ab-4298-9c65-d5e9b95657b5",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {
+          "maxTokens": 8000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -180,
+        280
+      ],
+      "id": "76334860-1177-4194-bd3d-5a6dca6411e3",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "consulta"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -420,
+        0
+      ],
+      "id": "1bc83c18-f2ed-4907-9149-f1ecff7549f5",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -560,
+        1140
+      ],
+      "id": "aa529bf3-1a4a-4661-a69e-d6e0997ac807",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Doc_ID_or_URL', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        300,
+        220
+      ],
+      "id": "c169698c-850a-44de-ab23-3aad11840fe9",
+      "name": "GoogleDocsAPIWebFetch",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "Y4kr6ehJucVBHDdU",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        140
+      ],
+      "id": "ef367430-72cc-4bd4-89dd-804a16dfb8b4",
+      "name": "EmailService",
+      "webhookId": "2f306e2f-d104-489c-b47d-683007e60809",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jti5JlNGYHy4oUKI",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-02T00:26:10.542Z",
+  "versionId": "87cfcb39-0b7d-4e6c-87b0-a884595da027"
+}
