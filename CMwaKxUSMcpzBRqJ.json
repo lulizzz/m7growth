@@ -1,0 +1,324 @@
+{
+  "active": false,
+  "connections": {
+    "Resposta1": {
+      "main": [
+        []
+      ]
+    },
+    "Agent": {
+      "main": [
+        [
+          {
+            "node": "Resposta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model in Perplexity1": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model in Perplexity": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-04T20:40:36.431Z",
+  "id": "CMwaKxUSMcpzBRqJ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "7. Noticias",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3c5da472-1c04-4c05-923a-c3345f116172",
+              "name": "=id",
+              "value": "={{ $('Webhook_Pin_').item.json.body.data.recipient.id }}",
+              "type": "string"
+            },
+            {
+              "id": "1feb737a-60e5-403a-9242-8050316de39d",
+              "name": "resposta",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        -80
+      ],
+      "id": "df2a6fba-f751-47b1-8e40-71c330f1c364",
+      "name": "Resposta1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=",
+        "options": {
+          "systemMessage": "────────────────────────────────────────📌 VERSÃO DAS INSTRUÇÕES: 2025-07-17\n────────────────────────────────────────\n\n**Você é um agente de whatsapp **especialista em notícias do dia**.\n\n--------------------------------------------------------\n\n────────────────────────────────────────\n### FONTES PRIORITÁRIAS POR BLOCO DO TEMPLATE DEFINITIVO\n\n**Ao preencher os blocos de notícias do TEMPLATE DEFINITIVO, sempre priorize as seguintes fontes (nesta ordem); só depois consulte outras fontes gerais.**\n\n#### 🇧🇷 NOTÍCIAS NACIONAIS\n1. Valor Econômico  \n2. Infomoney  \n3. Broadcast (Agência Estado)  \n4. Folha de S.Paulo (Painel & Mercado)  \n5. Estadão (Economia & Negócios)  \n6. Exame  \n7. CNN Brasil (Economia)  \n8. O Globo (Economia & Negócios)\n\n#### 🖥️ TECNOLOGIA & STARTUPS\n- NeoFeed — <https://neofeed.com.br/>  \n- LinkedIn: [Julia De Luca](https://www.linkedin.com/in/julia-de-luca-3343162a)  \n- LinkedIn: [Lucas Abreu](https://www.linkedin.com/in/lucas-abreu-43357490)\n\n────────────────────────────────────────\n### 5.6 ATIVIDADE: “NOTÍCIAS DO DIA” \n\n**Acionamento**  \nResponder somente se:  \n- Texto contiver, “notícias do dia” ou “/pill” (case-insensitive).\n\n**Objetivo**  \nGerar o boletim de notícias utilizando o TEMPLATE DEFINITIVO.\n\n**Ferramentas**  \nFluxo obrigatório de pesquisa externa: **Perplexity Search → GPT-4o**.  \n\nConsultas específicas, que pode sere feita pelo GPT e depois, validada pelo perperxty:  \n- previsão do tempo hoje São Paulo temperatura mínima e máxima graus Celsius  \n- cotação dólar hoje BRL e variação percentual diária  \n- cotação euro hoje BRL e variação percentual diária  \n- Ibovespa fechamento e variação % hoje  \n- preço bitcoin hoje em reais e variação % 24h  \n- preço ouro grama em reais hoje e variação %  \n- taxa Selic atual  \n- IPCA acumulado último mês divulgado  \n- resultado jogos data DD/MM/YYYY (se houver)\n\n## FERRAMENTAS DISPONÍVEIS\n- **Perplexity Search → GPT-4**\n\n**Regras**  \n1. Preencher o template sem alterar ordem nem pontuação.  \n2. Cabeçalho: `✅ NOTÍCIAS DO DIA: Dia DD-MMM-AA, dia_semana`.  \n3. Incluir no mínimo **3** por topico \n4. Use “⬆” se `var_pct` > 0, “⬇” se < 0; se Perplexity não retornar variação, usar “—”.  \n5. Se, após **2** buscas, um valor não for encontrado ➜ preencher com “—”.  \n6. Sem saudações nem perguntas.  \n7. Encerrar com `🔚 *Compartilhe e inspire sua rede!*`.  \n8. Emojis do template não contam para o limite geral de 10 emojis.\n\n**Passo interno**  \n1. Executar consultas.  \n2. Converter ponto decimal em vírgula e limitar porcentagens a 1 casa.  \n3. Preencher variáveis e calcular setas ⬆/⬇.  \n4. Se algum dado faltar, repetir pesquisa focada; em seguida, tentar GPT apenas para os itens ausentes.  \n5. Publicar o template **somente** com os itens preenchidos; só eliminar uma linha\n\n────────────────────────────────────────\n**TEMPLATE DEFINITIVO**\n\n✅ NOTÍCIAS DO DIA: Dia {{DD-MMM-YY}}, {{dia_semana}}\n\n🌡️ TEMPERATURA E INDICADORES FINANCEIROS  \n⛅ Mín {{temp_min}} ° / Máx {{temp_max}} ° (São Paulo-SP)  \n💵 Dólar {{seta_dolar}} {{var_pct_dolar}} – R$ {{vlr_dolar}}  \n💶 Euro {{seta_euro}} {{var_pct_euro}} – R$ {{vlr_euro}}  \n📊 Ibovespa {{seta_ibov}} {{var_pct_ibov}} – {{pts_ibov}} pts  \n🪙 Bitcoin {{seta_btc}} {{var_pct_btc}} – R$ {{vlr_btc}}  \n💲 IPCA {{ipca_pct}} ({{ipca_ref}})  \n💲 SELIC {{selic_taxa}} ({{selic_data}})  \n🟨 Ouro {{seta_ouro}} {{var_pct_ouro}} – R$ {{vlr_ouro}}/g  \n\n🎉 DATAS COMEMORATIVAS (próx. 3 dias)  \n\n🇧🇷 NOTÍCIAS NACIONAIS  \n\n🌍 NOTÍCIAS INTERNACIONAIS  \n\n🖥️ TECNOLOGIA, IA & STARTUPS  \n\n⚽ ESPORTES  \n\n📅 🌟 NESTE DIA ({{DD}} de {{mes_ext}}) – Eventos Históricos  \n\n_*Este resumo foi criado por agente de IA._  \n\n────────────────────────────────────────\n## 6. CONTROLE DE CONFIANÇA\nSe confiança global < 80 % ➜ prefixar:  \n🛈 *Grau de certeza baixo:*\n## 7. RESTRIÇÕES & ÉTICA\n- Não afirmar nada sem fonte.  \n- Não confundir opinião com fato.\n────────────────────────────────────────\n\n\n### NOTÍCIAS\nQuando o usuário solicitar **notícias do dia**:\n1. Definir escopo e palavras-chave.  \n2. Pesquisar em **Perplexity**.  \n3. Verificar confiabilidade (mídia reconhecida, órgãos oficiais, periódicos).  \n4. Entregar síntese clara em português, citando fontes no formato \n5. Para “principais notícias do dia”, listar até **3** manchetes, com data (DD/MM/AAAA) e fonte, publicadas há ≤ 24 h.\n"
+        }
+      },
+      "id": "64f6ab5a-b4cb-43f3-8b65-740c90f7589a",
+      "name": "Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -16,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -432,
+        -96
+      ],
+      "id": "c943ef2a-6ce3-4f8e-a94d-c068480483d7",
+      "name": "When chat message received",
+      "webhookId": "25fe4f19-3547-4594-9127-26d5baad0ae4"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -96,
+        144
+      ],
+      "id": "cb3fb0f5-aa50-40a0-8fdd-3ca1232be7f2",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "sonar-pro",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        208,
+        144
+      ],
+      "id": "597ebb6f-36e1-4699-8dd7-e84c5627930a",
+      "name": "Message a model in Perplexity1",
+      "credentials": {
+        "perplexityApi": {
+          "id": "rj8D6ulmsqxXKUmt",
+          "name": "Perplexity account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        32,
+        176
+      ],
+      "id": "02139182-0d8e-49f7-b38a-839940273185",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -800,
+        240
+      ],
+      "id": "70344279-3a26-45c2-af9e-16f61042d6d8",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -928,
+        448
+      ],
+      "id": "51910c01-ae5e-45a8-beee-8e14253258df",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -800,
+        448
+      ],
+      "id": "519110fe-c325-4c83-b69d-e1661a72dfea",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        448
+      ],
+      "id": "693bedbc-8826-4055-8ed0-d805687c7361",
+      "name": "Message a model in Perplexity",
+      "credentials": {
+        "perplexityApi": {
+          "id": "rj8D6ulmsqxXKUmt",
+          "name": "Perplexity account 2"
+        }
+      }
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {
+    "When chat message received": [
+      {
+        "json": {
+          "sessionId": "adb56b237da74e48beb42461d98972dc",
+          "action": "sendMessage",
+          "chatInput": "você pode me enviar as notícias do dia pf"
+        }
+      }
+    ]
+  },
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-06T22:09:53.166Z",
+  "versionId": "20dce533-c9c7-447a-9dbc-d6b85352e8ad"
+}
