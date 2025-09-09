@@ -1,0 +1,859 @@
+{
+  "active": false,
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dowload",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Trancrição imagem",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dowload1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dowload": {
+      "main": [
+        [
+          {
+            "node": "Trancrição do Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trancrição do Audio": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Envia msg para o Usuario1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trancrição imagem": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resposta": {
+      "main": [
+        [
+          {
+            "node": "Envia msg para o Usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook_Pin_03": {
+      "main": [
+        [
+          {
+            "node": "If_Cadastro de Tel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dowload1": {
+      "main": [
+        [
+          {
+            "node": "Trancrição do Arquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If_Cadastro de Tel": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent1": {
+      "main": [
+        [
+          {
+            "node": "Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        []
+      ]
+    },
+    "Trancrição do Arquivo": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-28T15:23:27.135Z",
+  "id": "4kDhxCpE7aMaASn1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "PinAI Zap_Teste",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d834df1f-8590-41f4-a3aa-a372ce5d7831",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        600
+      ],
+      "id": "ad7f9719-1b91-4a80-bb15-1b7f0060adcd",
+      "name": "Webhook_Pin_03",
+      "webhookId": "d834df1f-8590-41f4-a3aa-a372ce5d7831"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "13375300-ce4a-404e-882a-b17d039d1e33",
+                    "leftValue": "={{ $json.body.data.type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "074eb0fa-5990-4029-a5ba-9cbddbc523e2",
+                    "leftValue": "={{ $json.body.data.type }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6265f04e-fc59-4ea3-abbe-ecb856e83567",
+                    "leftValue": "={{ $json.body.data.type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "66f38727-a067-4e66-a3c0-57392bf0c953",
+                    "leftValue": "={{ $json.body.data.type }}",
+                    "rightValue": "file",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "file"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        120,
+        560
+      ],
+      "id": "12fea3a4-b4a8-417b-afd9-bda2a2d0e520",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.body.data.content.media.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "audio_user"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        420,
+        540
+      ],
+      "id": "eaadd896-edc3-4e13-b537-27a1346a15fa",
+      "name": "Dowload"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "audio_user",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        600,
+        520
+      ],
+      "id": "b09f2451-2f89-4847-ae00-ff4ab390cc78",
+      "name": "Trancrição do Audio",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "text": "descreva todo conteudo da imagem. responda sem acento, sem hifens",
+        "imageUrls": "={{ $json.body.data.content.media.url }}",
+        "simplify": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        440,
+        700
+      ],
+      "id": "591d0183-fef7-4cb4-8b26-5d0193cbb21a",
+      "name": "Trancrição imagem",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9f9336be-209b-4e3c-af03-ead36d10361d",
+              "name": "id",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.id }}",
+              "type": "string"
+            },
+            {
+              "id": "dd27aa7d-cb80-45c1-ac93-26dfc2764efe",
+              "name": "id_name",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.name }}",
+              "type": "string"
+            },
+            {
+              "id": "86c37a2d-c3bf-4952-bdc1-4da94fbe5389",
+              "name": "Conversa_audio enviado",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        440
+      ],
+      "id": "0b45303f-f82c-429b-a098-2a764dcd4ce4",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o4-mini",
+          "mode": "list",
+          "cachedResultName": "o4-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1240,
+        660
+      ],
+      "id": "ddf5f2e3-e5f7-41de-b097-3c896c587207",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.sessionId | $('Webhook_Pin_03').item.json.body.data.recipient.id }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1400,
+        680
+      ],
+      "id": "397bf3bb-f02e-4cb0-afec-0cb9fb25b82f",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bdf3cc0f-9f62-4211-b69c-567f063c52b2",
+              "name": "id",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2acbea30-d37b-4914-81b7-2c0310db6422",
+              "name": "id_name",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.name }}",
+              "type": "string"
+            },
+            {
+              "id": "c583f9ad-3d01-413d-9a7e-ef1127742a8a",
+              "name": "Conversa_imagem enviada",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        660,
+        780
+      ],
+      "id": "d91cff9b-9153-4e5b-bd75-4b6ddd09be10",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3c5da472-1c04-4c05-923a-c3345f116172",
+              "name": "=id",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.id }}",
+              "type": "string"
+            },
+            {
+              "id": "1feb737a-60e5-403a-9242-8050316de39d",
+              "name": "resposta",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1540,
+        220
+      ],
+      "id": "73c9da34-e87b-4081-9c1d-8150779b86d0",
+      "name": "Resposta"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.body.data.content.media.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        1080
+      ],
+      "id": "ab869ab4-7dd3-4a44-a250-09c94d135db2",
+      "name": "Dowload1"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        980,
+        1060
+      ],
+      "id": "232aa4df-3820-45a3-9070-b68fcafb88c9",
+      "name": "Trancrição do Arquivo",
+      "credentials": {
+        "openAiApi": {
+          "id": "eRdScrmNjihgWoFR",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.zapsterapi.com/v1/wa/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NTA2NDM2NTcsImlzcyI6InphcHN0ZXJhcGkiLCJzdWIiOiI2ZWE2YTc1Ni1mZGJhLTQyMGYtYmYzYS1jN2RmMjAzMzU2YzQiLCJqdGkiOiIyYzAyZTMzMi1kOTUzLTQ1ZDQtYjJlNy1jNGZlODQ0Y2Y1YjYifQ.NYhcnye_x79wymNUJASbZJbJe9GHc76o8Om_31hPDdM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "instance_id",
+              "value": "a7qwxj5mo5n73efcqfb9n"
+            },
+            {
+              "name": "recipient",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.id }} "
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.resposta }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        660
+      ],
+      "id": "d9d30b9c-3672-4842-9fa3-9cba7ae43d94",
+      "name": "Envia msg para o Usuario"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "533e88d8-3b6a-41c8-ad90-d1a655e2068a",
+              "leftValue": "={{ $json.body.data.recipient.id }}",
+              "rightValue": "={{ \"5511979714123\" }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "a4e5c0c4-3264-4bef-a37c-821bfbf0c8eb",
+              "leftValue": "={{ $json.body.data.recipient.id }}",
+              "rightValue": "={{ \"5511999458546\" }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "bdefc2fc-cc02-4274-afd7-92a1e3e5206f",
+              "leftValue": "={{ $json.body.data.recipient.id }}",
+              "rightValue": "={{ \"5511912231683\" }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "d4f0c5ee-27c7-4713-865d-586afb36f1d0",
+              "leftValue": "={{ $json.body.data.recipient.id }}",
+              "rightValue": "={{ \"5511962760043\" }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "82deec84-49d1-4719-a4f4-8edb4d579678",
+              "leftValue": "=",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        600
+      ],
+      "id": "9630d32d-623b-4ee2-96ca-ddf5d7e0bc91",
+      "name": "If_Cadastro de Tel"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "533e88d8-3b6a-41c8-ad90-d1a655e2068a",
+              "leftValue": "={{ $json.body.data.recipient.name }}",
+              "rightValue": "=Agente de Teste",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        880
+      ],
+      "id": "9309da4b-2bfe-438a-993d-f2038c41d3fd",
+      "name": "If_Cadastro de Tel1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9f9336be-209b-4e3c-af03-ead36d10361d",
+              "name": "id",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.id }}",
+              "type": "string"
+            },
+            {
+              "id": "dd27aa7d-cb80-45c1-ac93-26dfc2764efe",
+              "name": "id_name",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.name }}",
+              "type": "string"
+            },
+            {
+              "id": "86c37a2d-c3bf-4952-bdc1-4da94fbe5389",
+              "name": "Conversa",
+              "value": "={{ $json.body.data.content.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        620,
+        300
+      ],
+      "id": "46f90b03-545a-44f0-90e6-7e150b8ef827",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json['Conversa_imagem enviada'] }}\n{{ $json['Conversa_audio enviado'] }}\n{{ $json.Conversa }}\n{{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=### **Hora atual:** {{ $now }}\n\n### **Informações do Cliente**\n\n- **Whatsapp:** {{ $json.tel }}\n\n### **IDENTIDADE**\n\nVocê é um agente de whatsapp e o seu nome é PinAI ZAP. Você é especializado em ajduar a pessoas.\n\n---\n## ** Regras Especias**\n**seu nome é \"PinAI ZAP\"**\n**Use emojis somente se for apropriado.**\n**Certifique-se de usar markdown compatível com o whatsapp da ultima verção.**\n**Nunca use Bom dia, boa tarde, boa noite.**"
+        }
+      },
+      "id": "14df101e-31e3-46f2-bcd5-7854d51ab75d",
+      "name": "Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1220,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.zapsterapi.com/v1/wa/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NTA2NDM2NTcsImlzcyI6InphcHN0ZXJhcGkiLCJzdWIiOiI2ZWE2YTc1Ni1mZGJhLTQyMGYtYmYzYS1jN2RmMjAzMzU2YzQiLCJqdGkiOiIyYzAyZTMzMi1kOTUzLTQ1ZDQtYjJlNy1jNGZlODQ0Y2Y1YjYifQ.NYhcnye_x79wymNUJASbZJbJe9GHc76o8Om_31hPDdM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "instance_id",
+              "value": "a7qwxj5mo5n73efcqfb9n"
+            },
+            {
+              "name": "recipient",
+              "value": "={{ $('Webhook_Pin_03').item.json.body.data.recipient.id }} "
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.resposta }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        660
+      ],
+      "id": "71a08171-d35d-4807-9e61-104ee522c859",
+      "name": "Envia msg para o Usuario1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        80
+      ],
+      "id": "f2fea78c-afe8-4a4a-940f-62b475f23f0d",
+      "name": "When chat message received",
+      "webhookId": "9ea01e0a-99c0-4e95-aaf8-cbaab9ec4eb1"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-28T15:23:36.438Z",
+      "updatedAt": "2025-06-28T15:23:36.438Z",
+      "id": "D1217N0YK7PTzW0N",
+      "name": "Teste"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-07-02T22:55:37.349Z",
+  "versionId": "7c829bbe-2364-4a75-bf03-3e27354a5b11"
+}
