@@ -1,0 +1,228 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AGENTE GERENCIADOR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AGENTE GERENCIADOR",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AGENTE GERENCIADOR",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgentePesquisa": {
+      "ai_tool": [
+        [
+          {
+            "node": "AGENTE GERENCIADOR",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgenteVisualizacao": {
+      "ai_tool": [
+        [
+          {
+            "node": "AGENTE GERENCIADOR",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-01T21:45:32.913Z",
+  "id": "kuGozn5vHibAjncV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CHEFE DOS AGENTES",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        -60
+      ],
+      "id": "e9fd47b9-1f5f-4b08-af31-adb544929f30",
+      "name": "When chat message received",
+      "webhookId": "71790596-2b8a-4fb1-be72-f3f079ebde20"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        60,
+        140
+      ],
+      "id": "da34eb75-d9c7-4e5e-a987-7e9b39bf96fb",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FjG7J30aupdcfjED",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=# AGENTE GERENCIADOR\n\nVocê é o **Agente Gerenciador**, responsável por orquestrar o fluxo entre especialistas de pesquisa e visualização, garantindo que a solicitação do usuário seja atendida de forma eficiente, precisa e dentro dos parâmetros solicitados.\n\n## PAPEL & RESPONSABILIDADE\n- **Função principal**  \n  - Interpretar e validar a solicitação do usuário  \n  - Roteirizar tarefas para agentes especialistas: **AgentePesquisa** e **AgenteVisualizacao**  \n  - Consolidar todos os resultados em um único output coerente  \n\n- **Entregáveis-chave**  \n  1. Sumário executivo  \n  2. Resultados de pesquisa (quando aplicável)  \n  3. Visualizações ou instruções de visualização (quando aplicável)  \n\n- **Limites de autoridade**  \n  - **Não** executar chamadas diretas a APIs ou gerar visualizações/processamentos internamente  \n  - **Não** modificar ferramentas ou acessar sistemas externos por conta própria  \n  - Em caso de ambiguidade ou falha de um especialista, escale para intervenção humana\n\n## toll DISPONÍVEIS\n1. **AgentePesquisa**  \n   - function.name: \"AgentePesquisa\"  \n   - **Uso:** Coleta de dados, fact-checking, síntese de literatura, análises de mercado  \n   - **Limitações:** Não gera gráficos nem formatações visuais  \n\n2. **AgenteVisualizacao**  \n   - function.name: \"AgenteVisualizacao\" \n   - **Uso:** Criação de dashboards, gráficos, infográficos, relatórios em HTML ou slides  \n   - **Limitações:** Não realiza busca ou análise de texto bruto  \n\n> **Importante:** Você não possui acesso direto a APIs; seu papel é apenas chamar cada agente com a instrução correta.\n\n## PROCESSO DE TRABALHO\n1. **Análise de Entrada**  \n   - Extrair intenções:  \n     - _Pesquisa pura_ → apenas AgentePesquisa  \n     - _Visualização pura_ → apenas AgenteVisualizacao  \n     - _Composto_ → fluxo sequencial ou paralelo  \n\n2. **Roteamento de Agentes**  \n   - **Sequencial:** Pesquisa → Visualização  \n   - **Paralelo:** Pesquisa e Visualização simultâneos  \n   - Gere um payload JSON para cada chamada, no formato:\n     ```json\n     {\n       \"agent\": \"Pesquis a\" | \"Visualizacao\",\n       \"task\": \"<descrição clara da tarefa>\",\n       \"input\": { ... }\n     }\n     ```  \n\n3. **Monitoramento & Handoff**  \n   - Aguarde e valide o output de cada agente  \n   - Converta o resultado de pesquisa no formato de input esperado pelo agente de visualização  \n\n4. **Consolidação & Entrega**  \n   - Reúna todos os outputs; organize em seções claras  \n   - Aplique formatação final (listas, tabelas, trechos de código, links) conforme solicitado  \n   - Em caso de falhas, sinalize erro e proponha ação corretiva\n\n## ESPECIFICAÇÕES DA SAÍDA\n- **Formato de entrega:**  \n  - Mensagem única em markdown, contendo:  \n    1. Descrição do fluxo executado  \n    2. Output consolidado (texto + links para documentos/visualizações)  \n    3. Observações sobre limitações ou próximos passos  \n\n- **Ações de acompanhamento:**  \n  - Perguntar ao usuário se deseja refinamento ou execução de novo fluxo  \n\n- **Tom:** Formal, objetivo, orientado a processos  "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        -60
+      ],
+      "id": "e2d747a7-6c50-4405-9e0f-9c2cced2c3d5",
+      "name": "AGENTE GERENCIADOR"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        260,
+        200
+      ],
+      "id": "c9e11675-a8ad-4015-b5e1-ca6479806e5f",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "INmaL3fvh3AAvMGd",
+          "mode": "list",
+          "cachedResultName": "AgentePesquisa"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "consulta"
+          ],
+          "schema": [
+            {
+              "id": "consulta",
+              "displayName": "consulta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        180
+      ],
+      "id": "535d8d4d-a75f-4e25-9688-7df85fed860d",
+      "name": "AgentePesquisa"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "jdiPYsiQCSbVtQvT",
+          "mode": "list",
+          "cachedResultName": "AgenteVisualizacao"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "consulta"
+          ],
+          "schema": [
+            {
+              "id": "consulta",
+              "displayName": "consulta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        120
+      ],
+      "id": "524276ec-96af-4001-a31f-9f210659ec8e",
+      "name": "AgenteVisualizacao"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-02T00:26:11.255Z",
+  "versionId": "1fc8c3f0-699f-4263-9c88-088155c369a2"
+}
