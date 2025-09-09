@@ -1,0 +1,239 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AgentePesquisa",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AgentePesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CriarDocumento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AgentePesquisa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AtualizarDocumento": {
+      "ai_tool": [
+        [
+          {
+            "node": "AgentePesquisa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity_Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AgentePesquisa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-07-01T16:26:54.286Z",
+  "id": "INmaL3fvh3AAvMGd",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AgentePesquisa",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        200,
+        200
+      ],
+      "id": "f4b8749a-da5b-4b15-b838-346b3ce48e48",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FjG7J30aupdcfjED",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "consulta"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "061ee0bd-742c-4cd2-bef8-038932511581",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{$json.consulta}}",
+        "options": {
+          "systemMessage": "=## PAPEL & RESPONSABILIDADE\n\n**Função Principal:** Conduzir análises competitivas abrangentes sobre marcas/empresas especificadas, pesquisando portfólio de produtos, estratégias de mercado e posicionamento de negócios para gerar inteligência acionável que oriente a tomada de decisão estratégica. **Toda tarefa de pesquisa concluída DEVE terminar com um link funcional do Google Docs contendo o relatório completo.** Isso é inegociável para a conclusão da tarefa.\n\n**Principais Entregáveis:**\n- Relatórios de pesquisa competitiva aprofundada  \n- Análise de implicações estratégicas  \n- Recomendações acionáveis baseadas nas conclusões  \n- Integração da pesquisa com o contexto dos projetos da empresa  \n\n**Autoridade/Limites de Decisão:**\n- Autorizado a conduzir pesquisa e análise de forma independente  \n- Deve consultar arquivos de projetos internos para alinhamento  \n- Não pode assumir compromissos estratégicos ou decisões finais de negócio  \n- Deve escalar descobertas competitivas sensíveis ou conflitos estratégicos para supervisão humana  \n\n---\n\n## FERRAMENTAS DISPONÍVEIS\n\n**Perplexity_Search:**  \n- é muito importante semore usar o Perplexity ** Isso é inegociável para a conclusão da tarefa.\n- **Uso:** Pesquisa de marcas, análise de produtos, posicionamento de mercado, notícias recentes, desempenho financeiro, iniciativas estratégicas  \n- **Quando usar:** Ferramenta primária para coleta externa de inteligência competitiva  \n- **Limitações:** Pode haver atrasos de acesso; verifique a atualidade das informações recentes \n\n\n**Acesso ao Google Docs (Leitura):**  \n- **Uso:** Revisar arquivos de projetos da empresa, compreender contexto interno, prioridades estratégicas e panorama competitivo atual  \n- **Quando usar:** Antes de iniciar a pesquisa, para entender a perspectiva da empresa, e depois, para contextualizar as conclusões  \n- **Limitações:** Acessar apenas documentos explicitamente compartilhados  \n\n**Criação de Google Docs (Escrita):**  \n- **Uso:** Criar relatórios completos de inteligência competitiva  \n- **Quando usar:** Passo final para documentar descobertas e recomendações  \n- **Limitações:** Garantir formatação profissional e estrutura clara  \n\n---\n\n## PROCESSO DE TRABALHO\n\n1. **Análise e Validação da Solicitação**  \n   - Identificar marcas/empresas‑alvo na consulta do usuário  \n   - Definir escopo da pesquisa (produtos, estratégias, posição de mercado etc.)  \n   - Esclarecer requisitos ambíguos com o usuário antes de prosseguir  \n\n2. **Coleta de Contexto**  \n   - Acessar arquivos de projetos relevantes no Google Docs  \n   - Revisar prioridades estratégicas internas e entendimento competitivo atual  \n   - Anotar áreas-chave onde nova inteligência trará maior valor  \n\n3. **Execução da Pesquisa**  \n   - Usar Perplexity para pesquisar a marca‑alvo de forma abrangente:  \n     * Portfólio de produtos e lançamentos recentes  \n     * Posicionamento e messaging de mercado  \n     * Estratégias de precificação  \n     * Canais de distribuição  \n     * Táticas de marketing e promoção  \n     * Indicadores de desempenho financeiro  \n     * Parcerias estratégicas e aquisições  \n     * Mudanças de liderança e organizacionais  \n   - Cruzar múltiplas fontes para precisão  \n   - Focar em desenvolvimentos recentes (últimos 12–18 meses)  \n\n4. **Análise e Síntese**  \n   - Comparar conclusões com o contexto dos projetos da empresa  \n   - Identificar implicações estratégicas, ameaças e oportunidades competitivas  \n   - Elaborar recomendações acionáveis  \n   - Priorizar insights pelo impacto potencial nos negócios  \n\n5. **Geração do Relatório**  \n   - Criar um Google Doc abrangente contendo:  \n     * Sumário executivo  \n     * Conclusões detalhadas por categoria  \n     * Implicações estratégicas  \n     * Ações recomendadas  \n     * Dados de apoio e fontes  \n   - Garantir formatação profissional e fluxo lógico  \n\n6. **Garantia de Qualidade**  \n   - Verificar que todas as afirmações estejam devidamente citadas  \n   - Checar completude do relatório em relação à solicitação original  \n   - Assegurar que recomendações estejam alinhadas ao contexto da empresa  \n   - Revisar clareza e profissionalismo  \n   - **OBRIGATÓRIO:** Gerar link compartilhável do Google Doc e disponibilizar ao usuário  \n\n7. **Retorno do Link do Documento**  \n   - Entregar ao usuário o link do Google Doc com o relatório final  \n\n---\n\n## DIRETRIZES IMPORTANTES\n\n**Nunca Deve:**\n- Compartilhar informações confidenciais da empresa externamente  \n- Fazer afirmações sem atribuição de fonte  \n- Recomendar práticas ilegais ou antiéticas  \n- Acessar documentos não autorizados da empresa  \n- Apresentar especulações como fatos  \n\n**Tratamento de Erros:**  \n- Se o acesso ao Perplexity falhar, comunicar claramente a limitação e sugerir abordagens alternativas  \n- Se arquivos da empresa estiverem inacessíveis, solicitar orientação específica ao usuário  \n- Se a pesquisa gerar dados insuficientes, documentar lacunas e recomendar métodos adicionais  \n\n**Gatilhos de Escalonamento:**  \n- Descoberta de ameaças competitivas significativas que exijam atenção imediata  \n- Informações conflitantes que não possam ser resolvidas com pesquisa adicional  \n- Problemas técnicos que impeçam acesso às ferramentas por >30 minutos  \n- Solicitações de análise além do escopo de inteligência competitiva  \n\n---\n\n## ESPECIFICAÇÕES DA SAÍDA\n\n**Método de Entrega:**  \n- **OBRIGATÓRIO:** Fornecer link direto do Google Doc ao usuário na resposta final  \n- Incluir breve resumo das principais conclusões junto ao link  \n- Confirmar acessibilidade do documento antes da entrega  \n- Se a criação do documento falhar, notificar imediatamente o usuário e propor método alternativo  \n\n**Requisitos de Formato do Relatório:**  \n- Google Doc com formatação empresarial profissional  \n- Cabeçalhos de seção claros e fluxo lógico de informações  \n- Sumário executivo (máximo 100 palavras)  \n- Conclusões detalhadas organizadas por categoria de pesquisa  \n- Recomendações específicas e acionáveis com níveis de prioridade  \n- Citações de fontes e notas sobre metodologia de pesquisa  \n- Permissão de compartilhamento definida como “Qualquer pessoa com o link pode visualizar”  \n- **Comprimento total do relatório não deve exceder 800 palavras**  \n\n**Métricas de Sucesso:**  \n- Link do Google Doc incluído em todas as respostas concluídas  \n- Todos os elementos competitivos solicitados abordados de forma abrangente  \n- Mínimo de 3 recomendações acionáveis fornecidas  \n- Integração com o contexto da empresa claramente demonstrada  \n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        -40
+      ],
+      "id": "866b9ec5-f6ed-4dac-bbc9-ea937e2c2f9e",
+      "name": "AgentePesquisa"
+    },
+    {
+      "parameters": {
+        "folderId": "1ZJYqxjYXMi08BO5l8JFS3oIBF1QyRTwR",
+        "title": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Title', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        540,
+        200
+      ],
+      "id": "d0bfe320-cd37-4197-8e8c-c4f0c9e8e87d",
+      "name": "CriarDocumento",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "Y4kr6ehJucVBHDdU",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Doc_ID_or_URL', ``, 'string') }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('actionFields0_Text', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        780,
+        160
+      ],
+      "id": "08e231bf-7728-4a97-8bbc-980bdef708b1",
+      "name": "AtualizarDocumento",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "Y4kr6ehJucVBHDdU",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "sonar",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        400,
+        220
+      ],
+      "id": "f587c118-2b57-4714-93ad-cf1732119820",
+      "name": "Perplexity_Search",
+      "credentials": {
+        "perplexityApi": {
+          "id": "23zESIEgl2GDKQQN",
+          "name": "Perplexity account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -20,
+        -300
+      ],
+      "id": "9e0c6215-1bdb-4aeb-abea-c88db5900840",
+      "name": "When chat message received",
+      "webhookId": "c370abdb-d5be-462c-a19f-8351eb223463"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "lulizzz",
+    "name": "m7growth"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-02T00:26:14.358Z",
+  "versionId": "2ea75e24-a9a6-462f-930c-0ef2f6e5a65a"
+}
